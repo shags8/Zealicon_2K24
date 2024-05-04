@@ -1,187 +1,223 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_height="match_parent"
-    android:layout_width="match_parent"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".RegisterFragment"
-    android:background="@drawable/background_2">
-    <androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:focusableInTouchMode="true"
+    android:clickable="true"
+    android:focusable="true"
+    android:background="@drawable/background_2"
+    tools:context=".RegisterFragment">
+
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent">
 
-        <ImageView
-            android:id="@+id/logo"
-            android:layout_width="150dp"
-            android:layout_height="150dp"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:src="@drawable/zeal_logo"
-            android:layout_marginTop="40dp"
-            />
-        <TextView
-            android:id="@+id/greetHead"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/logo"
-            android:layout_marginHorizontal="20dp"
-            android:layout_marginTop="32dp"
-            android:text="Let's get you registered!"
-            android:textStyle="bold"
-            android:textSize="30sp"
-            android:textColor="@color/white"
-            />
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:layout_constraintLeft_toLeftOf="@id/inputName"
-            app:layout_constraintBottom_toTopOf="@id/inputName"
-            android:text="Name"
-            android:textSize="20sp"
-            android:textColor="@color/white"
-            />
-
-        <EditText
-            android:id="@+id/inputName"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/greetHead"
-            android:layout_marginTop="60dp"
-            android:layout_marginHorizontal="20dp"
-            android:hint="Enter your name"
-            android:textColorHint="#A9FFFFFF"
-            android:backgroundTint="@color/white"
-            android:textSize="18sp"
-            android:textColor="@color/white"
-            android:paddingVertical="20dp"
-            />
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:layout_constraintLeft_toLeftOf="@id/inputEmail"
-            app:layout_constraintBottom_toTopOf="@id/inputEmail"
-            android:text="Email"
-            android:textSize="20sp"
-            android:textColor="@color/white"
-            />
-
-        <EditText
-            android:id="@+id/inputEmail"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/inputName"
-            android:layout_marginTop="40dp"
-            android:layout_marginHorizontal="20dp"
-            android:hint="Enter your email"
-            android:textColorHint="#A9FFFFFF"
-            android:textSize="18sp"
-            android:backgroundTint="@color/white"
-            android:textColor="@color/white"
-            android:paddingVertical="20dp"
-            />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:layout_constraintLeft_toLeftOf="@id/inputPhone"
-            app:layout_constraintBottom_toTopOf="@id/inputPhone"
-            android:text="Phone"
-            android:textSize="20sp"
-            android:textColor="@color/white"
-            />
-
-        <EditText
-            android:id="@+id/inputPhone"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/inputEmail"
-            android:layout_marginTop="40dp"
-            android:layout_marginHorizontal="20dp"
-            android:hint="Enter your phone no."
-            android:inputType="phone"
-            android:backgroundTint="@color/white"
-            android:textSize="18sp"
-            android:textColorHint="#A9FFFFFF"
-            android:paddingVertical="20dp"
-            android:textColor="@color/white"
-            />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:layout_constraintLeft_toLeftOf="@id/inputAdmNo."
-            app:layout_constraintBottom_toTopOf="@id/inputAdmNo."
-            android:text="Admission No."
-            android:textSize="20sp"
-            android:textColor="@color/white"
-            />
-
-        <EditText
-            android:id="@+id/inputAdmNo."
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/inputPhone"
-            android:layout_marginTop="40dp"
-            android:layout_marginHorizontal="20dp"
-            android:hint="Enter your admission no."
-            android:inputType="phone"
-            android:textSize="18sp"
-            android:textColorHint="#A9FFFFFF"
-            android:textColor="@color/white"
-            android:paddingVertical="20dp"
-            android:backgroundTint="@color/white"
-            />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:layout_constraintLeft_toLeftOf="@id/inputId"
-            app:layout_constraintBottom_toTopOf="@id/inputId"
-            android:text="Upload your ID Card"
-            android:textSize="20sp"
-            android:layout_marginBottom="15dp"
-            android:textColor="@color/white"
-            />
-        <ImageView
-            android:id="@+id/inputId"
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/inputAdmNo."
-            android:layout_marginTop="50dp"
-            android:src="@drawable/id_card"
-            android:layout_marginHorizontal="20dp"
-            />
+            android:layout_height="match_parent">
 
-        <androidx.appcompat.widget.AppCompatButton
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/inputId"
-            android:layout_marginTop="50dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            android:layout_marginBottom="20dp"
-            android:layout_marginHorizontal="20dp"
-            android:background="@drawable/button"
-            android:textColor="@color/white"
-            android:text="Verify"
-            android:textAllCaps="false"
-            android:textSize="20sp"
-            />
+            <ImageView
+                android:id="@+id/logo"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:layout_marginTop="40dp"
+                android:src="@drawable/zeal_logo"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            <TextView
+                android:id="@+id/greetHead"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginTop="28dp"
+                android:fontFamily="@font/outfit_semibold"
+                android:text="Let's get you registered!"
+                android:textColor="@color/white"
+                android:textSize="30sp"
+                android:textStyle="bold"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/logo" />
 
-</ScrollView>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/outfit_medium"
+                android:text="Name"
+                android:textColor="@color/white"
+                android:textSize="20sp"
+                app:layout_constraintBottom_toTopOf="@id/inputName"
+                app:layout_constraintLeft_toLeftOf="@id/inputName" />
+
+            <EditText
+                android:id="@+id/inputName"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginTop="60dp"
+                android:backgroundTint="@color/white"
+                android:singleLine="true"
+                android:maxLines="1"
+                android:inputType="textPersonName"
+                android:fontFamily="@font/outfit_regular"
+                android:hint="Enter your name"
+                android:paddingVertical="20dp"
+                android:textColor="@color/white"
+                android:textColorHint="#A9FFFFFF"
+                android:textSize="18sp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/greetHead" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/outfit_medium"
+                android:text="Email"
+                android:textColor="@color/white"
+                android:textSize="20sp"
+                app:layout_constraintBottom_toTopOf="@id/inputEmail"
+                app:layout_constraintLeft_toLeftOf="@id/inputEmail" />
+
+            <EditText
+                android:id="@+id/inputEmail"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginTop="40dp"
+                android:backgroundTint="@color/white"
+                android:fontFamily="@font/outfit_regular"
+                android:inputType="textEmailAddress"
+                android:maxLines="1"
+                android:singleLine="true"
+                android:hint="Enter your email"
+                android:paddingVertical="20dp"
+                android:textColor="@color/white"
+                android:textColorHint="#A9FFFFFF"
+                android:textSize="18sp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/inputName" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/outfit_medium"
+                android:text="Phone"
+                android:textColor="@color/white"
+                android:textSize="20sp"
+                app:layout_constraintBottom_toTopOf="@id/inputPhone"
+                app:layout_constraintLeft_toLeftOf="@id/inputPhone" />
+
+            <EditText
+                android:id="@+id/inputPhone"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginTop="40dp"
+                android:backgroundTint="@color/white"
+                android:fontFamily="@font/outfit_regular"
+                android:hint="Enter your phone no."
+                android:inputType="phone"
+                android:paddingVertical="20dp"
+                android:maxLines="1"
+                android:maxLength="10"
+                android:singleLine="true"
+                android:textColor="@color/white"
+                android:textColorHint="#A9FFFFFF"
+                android:textSize="18sp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/inputEmail" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/outfit_medium"
+                android:text="Admission No."
+                android:textColor="@color/white"
+                android:textSize="20sp"
+                app:layout_constraintBottom_toTopOf="@id/inputAdmNo."
+                app:layout_constraintLeft_toLeftOf="@id/inputAdmNo." />
+
+            <EditText
+                android:id="@+id/inputAdmNo."
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginTop="40dp"
+                android:backgroundTint="@color/white"
+                android:fontFamily="@font/outfit_regular"
+                android:hint="Enter your admission no."
+                android:inputType="textCapCharacters"
+                android:maxLines="1"
+                android:singleLine="true"
+                android:textAllCaps="true"
+                android:paddingVertical="20dp"
+                android:textColor="@color/white"
+                android:textColorHint="#A9FFFFFF"
+                android:textSize="18sp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/inputPhone" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="15dp"
+                android:fontFamily="@font/outfit_medium"
+                android:text="Upload your ID Card"
+                android:textColor="@color/white"
+                android:textSize="20sp"
+                app:layout_constraintBottom_toTopOf="@id/inputId"
+                app:layout_constraintLeft_toLeftOf="@id/inputId" />
+
+            <ImageView
+                android:id="@+id/inputId"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginTop="60dp"
+                android:src="@drawable/id_card"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/inputAdmNo." />
+
+            <ImageView
+                android:id="@+id/registerButton"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginBottom="20dp"
+                android:layout_marginTop="40dp"
+                android:clickable="true"
+                android:focusable="true"
+                android:background="@drawable/round_outline"
+                android:clipToOutline="true"
+                android:foreground="?android:attr/selectableItemBackgroundBorderless"
+                android:src="@drawable/register"
+                app:layout_constraintTop_toBottomOf="@id/inputId"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+    </androidx.core.widget.NestedScrollView>
+
+
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
