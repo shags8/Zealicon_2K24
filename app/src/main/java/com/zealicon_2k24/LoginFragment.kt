@@ -6,7 +6,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
-import com.zealicon_2k24.databinding.FragmentLoginBinding
+import com.zealicon_2024.R
+import com.zealicon_2024.databinding.FragmentLoginBinding
 
 class LoginFragment : Fragment() {
     var _binding: FragmentLoginBinding? = null
