@@ -4,11 +4,11 @@ plugins {
 }
 
 android {
-    namespace = "com.zealicon_2k24"
+    namespace = "com.zealicon_2024"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "com.zealicon_2k24"
+        applicationId = "com.zealicon_2024"
         minSdk = 24
         targetSdk = 34
         versionCode = 1
