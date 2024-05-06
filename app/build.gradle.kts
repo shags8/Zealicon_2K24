@@ -51,4 +51,5 @@ dependencies {
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
     implementation ("androidx.core:core-splashscreen:1.0.0-beta02")
+    implementation("io.github.chaosleung:pinview:1.4.4")
 }
