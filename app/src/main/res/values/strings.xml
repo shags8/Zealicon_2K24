@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Zealicon_2K24</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="resendotp"><u>ResendOTP</u></string>
+    <string name="continue_without_zeal_id"><u>Continue Without Zeal ID</u></string>
+</resources>

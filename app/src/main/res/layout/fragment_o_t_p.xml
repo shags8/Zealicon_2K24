@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".OTPFragment"
+    android:background="@drawable/background_3">
+
+    <ImageView
+        android:id="@+id/logo"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="40dp"
+        android:src="@drawable/zeal_logo"
+        />
+
+    <TextView
+        android:id="@+id/otpHead"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/logo"
+        android:layout_marginTop="40dp"
+        android:text="OTP Verification"
+        android:fontFamily="@font/outfit_semibold"
+        android:textSize="32sp"
+        android:textColor="#BC98FF"
+        />
+
+    <TextView
+        android:id="@+id/otpDesc"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/otpHead"
+        android:layout_marginTop="10dp"
+        android:text="Enter the OTP sent to your Phone No."
+        android:fontFamily="@font/outfit_regular"
+        android:layout_marginHorizontal="20dp"
+        android:gravity="center"
+        android:textSize="20sp"
+        android:textColor="#BFBC98FF"
+        />
+
+    <com.chaos.view.PinView
+        android:id="@+id/otp"
+        app:itemCount="4"
+        app:itemWidth="46dp"
+        app:itemHeight="58dp"
+        android:gravity="center"
+        android:layout_marginTop="30dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:elevation="10dp"
+        android:itemBackground="@drawable/edit_text_2"
+        android:layout_gravity="center"
+        android:inputType="number"
+        android:defaultFocusHighlightEnabled="true"
+        app:itemSpacing="20dp"
+        android:fontFamily="@font/outfit_medium"
+        android:textColorHint="#B48CFF"
+        app:lineColor="#B48CFF"
+        android:textSize="30sp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:textColor="#B48CFF"
+        app:layout_constraintTop_toBottomOf="@id/otpDesc"
+        app:layout_constraintRight_toRightOf="parent"
+        style="@style/PinWidget.PinView"
+        />
+
+    <TextView
+        android:id="@+id/resend"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/otp"
+        android:layout_marginTop="10dp"
+        android:text="@string/resendotp"
+        android:fontFamily="@font/outfit_regular"
+        android:layout_marginHorizontal="20dp"
+        android:gravity="center"
+        android:textSize="14sp"
+        android:elevation="10dp"
+        android:textColor="#BFBC98FF"
+        />
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/otp"
+        android:layout_marginTop="20dp"
+        app:layout_constraintBottom_toTopOf="@id/submitButton"
+        android:src="@drawable/scare_crow"
+        />
+
+    <ImageView
+        android:id="@+id/submitButton"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginBottom="30dp"
+        android:layout_marginTop="40dp"
+        android:clickable="true"
+        android:focusable="true"
+        android:background="@drawable/round_outline"
+        android:clipToOutline="true"
+        android:foreground="?android:attr/selectableItemBackgroundBorderless"
+        android:src="@drawable/submit_button"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
