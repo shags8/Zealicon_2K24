@@ -9,6 +9,6 @@ class LoginActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.activity_login)
-        //this is a comment
+        //this is a comment.
     }
 }
