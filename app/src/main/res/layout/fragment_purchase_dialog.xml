@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".PurchaseDialogFragment">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:cardCornerRadius="20dp">
+
+        <ImageView
+            android:id="@+id/background"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@drawable/background_popup"
+            android:scaleType="centerCrop"/>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/success"
+                android:layout_width="wrap_content"
+                android:visibility="invisible"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:layout_marginTop="30dp"
+                android:elevation="10dp"
+                android:src="@drawable/success"
+                />
+
+            <TextView
+                android:id="@+id/paymentHead"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Payment Successful"
+                android:visibility="invisible"
+                android:fontFamily="@font/outfit_regular"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/success"
+                android:layout_marginTop="10dp"
+                android:textColor="@color/black"
+                android:textSize="18sp"/>
+
+            <TextView
+                android:id="@+id/yourZeal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Your Zeal ID is"
+                android:visibility="invisible"
+                android:fontFamily="@font/outfit_regular"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/paymentHead"
+                android:layout_marginTop="10dp"
+                android:textColor="@color/black"
+                android:textSize="18sp"/>
+
+            <TextView
+                android:id="@+id/verifyHead"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Verification Successful!"
+                android:fontFamily="@font/outfit_regular"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:layout_marginTop="30dp"
+                android:textColor="@color/black"
+                android:textSize="18sp"/>
+
+            <TextView
+                android:id="@+id/purchaseHead"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:text="Purchase Your ZEAL ID"
+                android:gravity="center"
+                app:layout_constraintTop_toBottomOf="@+id/verifyHead"
+                android:layout_marginTop="15dp"
+                android:textSize="30sp"
+                android:layout_marginHorizontal="20dp"
+                android:fontFamily="@font/outfit_semibold"
+                android:textColor="@color/black"
+                />
+
+            <TextView
+                android:id="@+id/zealId"
+                android:layout_width="0dp"
+                android:visibility="invisible"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:text="ZEAL 123"
+                android:gravity="center"
+                app:layout_constraintTop_toBottomOf="@+id/yourZeal"
+                android:layout_marginTop="20dp"
+                android:textSize="36sp"
+                android:layout_marginHorizontal="20dp"
+                android:fontFamily="@font/outfit_bold"
+                android:textColor="@color/black"
+                />
+
+            <TextView
+                android:id="@+id/zealAmount"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:text="₹300"
+                android:gravity="center"
+                app:layout_constraintTop_toBottomOf="@+id/purchaseHead"
+                android:layout_marginTop="20dp"
+                android:textSize="36sp"
+                android:layout_marginHorizontal="20dp"
+                android:fontFamily="@font/outfit_bold"
+                android:textColor="@color/black"
+                />
+
+            <TextView
+                android:id="@+id/purchaseDesc"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="Entry to ZEALICON 2024 is through a Valid Zeal ID
+You need to pay ₹300 to get the entry."
+                android:fontFamily="@font/outfit_medium"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/yourZeal"
+                android:layout_marginTop="10dp"
+                android:textColor="@color/black"
+                android:layout_marginHorizontal="20dp"
+                android:gravity="center"
+                android:textSize="16sp"/>
+
+            <ImageView
+                android:id="@+id/payButton"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginBottom="20dp"
+                android:layout_marginTop="30dp"
+                android:clickable="true"
+                android:focusable="true"
+                android:background="@drawable/round_outline"
+                android:clipToOutline="true"
+                android:foreground="?android:attr/selectableItemBackgroundBorderless"
+                android:src="@drawable/pay_now"
+                app:layout_constraintTop_toBottomOf="@id/zealId"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <TextView
+                android:id="@+id/continueText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/continue_without_zeal_id"
+                android:fontFamily="@font/outfit_medium"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:layout_marginBottom="20dp"
+                app:layout_constraintTop_toBottomOf="@id/payButton"
+                android:layout_marginTop="20dp"
+                android:textColor="@color/white"
+                android:textSize="14sp"/>
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
