@@ -1,4 +1,4 @@
-package com.zealicon_2k24
+package com.zealicon_2024
 
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4

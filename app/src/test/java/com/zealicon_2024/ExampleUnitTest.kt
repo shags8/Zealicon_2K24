@@ -1,4 +1,4 @@
-package com.zealicon_2k24
+package com.zealicon_2024
 
 import org.junit.Test
 

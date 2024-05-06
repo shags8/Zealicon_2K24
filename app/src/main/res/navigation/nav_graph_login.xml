@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/loginFragment"
-        android:name="com.zealicon_2k24.LoginFragment"
+        android:name="com.zealicon_2024.LoginFragment"
         android:label="fragment_login"
         tools:layout="@layout/fragment_login" >
         <action
@@ -20,7 +20,7 @@
     </fragment>
     <fragment
         android:id="@+id/registerFragment"
-        android:name="com.zealicon_2k24.RegisterFragment"
+        android:name="com.zealicon_2024.RegisterFragment"
         android:label="fragment_register"
         tools:layout="@layout/fragment_register" >
         <action
@@ -33,7 +33,7 @@
     </fragment>
     <fragment
         android:id="@+id/OTPFragment"
-        android:name="com.zealicon_2k24.OTPFragment"
+        android:name="com.zealicon_2024.OTPFragment"
         android:label="fragment_o_t_p"
         tools:layout="@layout/fragment_o_t_p" />
 </navigation>

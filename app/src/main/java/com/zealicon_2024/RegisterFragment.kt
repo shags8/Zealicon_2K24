@@ -1,4 +1,4 @@
-package com.zealicon_2k24
+package com.zealicon_2024
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -6,7 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
-import com.zealicon_2k24.databinding.FragmentRegisterBinding
+import com.zealicon_2024.databinding.FragmentRegisterBinding
 
 class RegisterFragment : Fragment() {
     private var _binding: FragmentRegisterBinding? = null
