@@ -5,33 +5,387 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/background_5"
     tools:context=".MainActivity">
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent">
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            >
+            android:background="@drawable/background_4">
 
 
             <TextView
+                android:id="@+id/greet"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="60dp"
+                android:fontFamily="@font/outfit_medium"
+                android:text="Hello Ayush"
+                android:textColor="@color/white"
+
+                android:textSize="28sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/menuButton"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginTop="60dp"
+                android:layout_marginRight="24dp"
+                android:clickable="true"
+                android:src="@drawable/menu_button"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/search"
+                android:layout_width="0dp"
+                android:layout_height="56dp"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginTop="20dp"
+                android:backgroundTint="#80FFFFFF"
+                android:clickable="true"
+                android:focusable="true"
+                app:cardCornerRadius="43dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/greet"
+                app:strokeColor="#60298B" />
+
+            <ImageView
+                android:id="@+id/search_img"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:src="@drawable/search"
+                app:layout_constraintBottom_toBottomOf="@+id/search"
+                app:layout_constraintStart_toStartOf="@+id/greet"
+                app:layout_constraintTop_toTopOf="@+id/search" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:fontFamily="@font/outfit_medium"
+                android:text="Search Events"
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                app:layout_constraintBottom_toBottomOf="@+id/search"
+                app:layout_constraintStart_toEndOf="@+id/search_img"
+                app:layout_constraintTop_toTopOf="@+id/search" />
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/buyZeal"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginTop="20dp"
+                android:minHeight="168dp"
+                app:cardCornerRadius="12dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/search">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/zeal_bg" />
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:id="@+id/head"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="11dp"
+                        android:layout_marginTop="16dp"
+                        android:fontFamily="@font/outfit_medium"
+                        android:text="Hey,\nyou don’t have a Zeal ID !"
+                        android:textColor="@color/white"
+                        android:textSize="22sp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:fontFamily="@font/outfit_regular"
+                        android:text="You cannot enter the Zealicon-24 without a valid Zeal ID."
+                        android:textColor="@color/white"
+                        android:textSize="12sp"
+                        app:layout_constraintBottom_toBottomOf="@id/buyZealButton"
+                        app:layout_constraintEnd_toStartOf="@+id/buyZealButton"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="@id/buyZealButton" />
+
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/buyZealButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="right"
+                        android:layout_marginLeft="11dp"
+                        android:layout_marginTop="24dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_marginBottom="15dp"
+                        android:background="@drawable/button"
+                        android:drawableEnd="@drawable/arrow"
+                        android:drawablePadding="10dp"
+                        android:fontFamily="@font/outfit_medium"
+                        android:paddingHorizontal="20dp"
+                        android:text="Buy Now"
+                        android:textAllCaps="false"
+                        android:textSize="14sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent" />
+
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/timer"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginTop="20dp"
+                android:minHeight="222dp"
+                app:cardCornerRadius="12dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/buyZeal">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/timer_bg_" />
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <ImageView
+                        android:id="@+id/dayHead"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginTop="40dp"
+                        android:layout_marginRight="10dp"
+                        android:src="@drawable/day_head"
+                        app:layout_constraintEnd_toStartOf="@id/hourHead"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <ImageView
+                        android:id="@+id/hourHead"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="40dp"
+                        android:layout_marginRight="20dp"
+                        android:src="@drawable/hour_head"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/dayHead"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <ImageView
+                        android:id="@+id/d1"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="5dp"
+                        android:src="@drawable/time_bg"
+                        app:layout_constraintEnd_toStartOf="@id/d2"
+                        app:layout_constraintStart_toStartOf="@+id/dayHead"
+                        app:layout_constraintTop_toBottomOf="@id/dayHead" />
+
+                    <TextView
+                        android:id="@+id/d1TV"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/gulfsdisplay_condensed"
+                        android:text="1"
+                        android:textColor="@color/white"
+                        android:textSize="80sp"
+                        app:layout_constraintBottom_toBottomOf="@id/d1"
+                        app:layout_constraintEnd_toEndOf="@id/d1"
+                        app:layout_constraintStart_toStartOf="@id/d1"
+                        app:layout_constraintTop_toTopOf="@id/d1" />
+
+                    <ImageView
+                        android:id="@+id/d2"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+                        android:src="@drawable/time_bg"
+                        app:layout_constraintEnd_toEndOf="@+id/dayHead"
+                        app:layout_constraintStart_toEndOf="@+id/d1"
+                        app:layout_constraintTop_toBottomOf="@id/dayHead" />
+
+                    <TextView
+                        android:id="@+id/d2TV"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/gulfsdisplay_condensed"
+                        android:text="2"
+                        android:textColor="@color/white"
+                        android:textSize="80sp"
+                        app:layout_constraintBottom_toBottomOf="@id/d2"
+                        app:layout_constraintEnd_toEndOf="@id/d2"
+                        app:layout_constraintStart_toStartOf="@id/d2"
+                        app:layout_constraintTop_toTopOf="@id/d2" />
+
+                    <ImageView
+                        android:id="@+id/h1"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="5dp"
+                        android:src="@drawable/time_bg"
+                        app:layout_constraintEnd_toStartOf="@id/h2"
+                        app:layout_constraintStart_toStartOf="@+id/hourHead"
+                        app:layout_constraintTop_toBottomOf="@id/hourHead" />
+
+                    <TextView
+                        android:id="@+id/h2TV"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:elevation="10dp"
+                        android:fontFamily="@font/gulfsdisplay_condensed"
+                        android:text="9"
+                        android:textColor="@color/white"
+                        android:textSize="80sp"
+                        app:layout_constraintBottom_toBottomOf="@id/h2"
+                        app:layout_constraintEnd_toEndOf="@id/h2"
+                        app:layout_constraintStart_toStartOf="@id/h2"
+                        app:layout_constraintTop_toTopOf="@id/h2" />
+
+                    <TextView
+                        android:id="@+id/h1TV"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:elevation="10dp"
+                        android:fontFamily="@font/gulfsdisplay_condensed"
+                        android:text="6"
+                        android:textColor="@color/white"
+                        android:textSize="80sp"
+                        app:layout_constraintBottom_toBottomOf="@id/h1"
+                        app:layout_constraintEnd_toEndOf="@id/h1"
+                        app:layout_constraintStart_toStartOf="@id/h1"
+                        app:layout_constraintTop_toTopOf="@id/h1" />
+
+                    <ImageView
+                        android:id="@+id/h2"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+                        android:src="@drawable/time_bg"
+                        app:layout_constraintEnd_toEndOf="@+id/hourHead"
+                        app:layout_constraintStart_toEndOf="@+id/h1"
+                        app:layout_constraintTop_toBottomOf="@id/hourHead" />
+
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+            </com.google.android.material.card.MaterialCardView>
+
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/eventsCard"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginTop="20dp"
+                android:minHeight="168dp"
+                app:cardCornerRadius="12dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/timer">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/event_cats" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:fontFamily="@font/outfit_semibold"
+                    android:gravity="center"
+                    android:text="EVENTS"
+                    android:textColor="#2B204C"
+                    android:textSize="32sp" />
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <androidx.viewpager2.widget.ViewPager2
+                android:id="@+id/rv"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginTop="20dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/eventsCard" />
+
+            <TableLayout
+                android:id="@+id/tabLayout"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:text="this is the main fragment"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintLeft_toLeftOf="parent"
-                android:gravity="center"/>
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/rv"
+                app:tabBackground="@drawable/tab_selector"
+                app:tabGravity="center"
+                app:tabIndicatorHeight="0dp"
+                android:layout_marginTop="10dp"
+                />
 
+            <!--            <androidx.recyclerview.widget.RecyclerView-->
+            <!--                android:id="@+id/rv"-->
+            <!--                android:layout_width="0dp"-->
+            <!--                android:layout_height="wrap_content"-->
+            <!--                android:layout_marginLeft="10dp"-->
+            <!--                android:layout_marginTop="20dp"-->
+            <!--                android:orientation="horizontal"-->
+            <!--                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"-->
+            <!--                app:layout_constraintEnd_toEndOf="parent"-->
+            <!--                app:layout_constraintStart_toStartOf="parent"-->
+            <!--                app:layout_constraintTop_toBottomOf="@id/eventsCard"-->
+            <!--                tools:listitem="@layout/category_card_item" />-->
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvEvents"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="10dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="50dp"
+                android:paddingBottom="30dp"
+                app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/rv"
+                app:spanCount="2"
+                tools:listitem="@layout/event_item" />
         </androidx.constraintlayout.widget.ConstraintLayout>
-
 
 
     </androidx.core.widget.NestedScrollView>

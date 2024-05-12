@@ -1,5 +1,6 @@
 package com.zealicon_2024
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -11,6 +12,8 @@ import com.zealicon_2024.databinding.FragmentPurchaseDialogBinding
 class PurchaseDialogFragment : BottomSheetDialogFragment() {
     private var _binding : FragmentPurchaseDialogBinding? = null
     private val binding get() = _binding!!
+
+    var isPayDone = false
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?,
@@ -18,6 +21,11 @@ class PurchaseDialogFragment : BottomSheetDialogFragment() {
         _binding = FragmentPurchaseDialogBinding.inflate(inflater, container, false)
 
         binding.payButton.setOnClickListener {
+            if(!isPayDone){
+                isPayDone = true
+            }else{
+                startActivity(Intent(requireContext(), MainActivity::class.java))
+            }
             binding.background.setImageResource(R.drawable.background_popup_2)
             binding.success.isVisible = true
             binding.paymentHead.isVisible = true
@@ -29,6 +37,7 @@ class PurchaseDialogFragment : BottomSheetDialogFragment() {
             binding.purchaseHead.isVisible = false
             binding.verifyHead.isVisible = false
             binding.zealAmount.isVisible = false
+
         }
 //        binding.payButton.setOnClickListener {
 //            binding.background.setImageResource(R.drawable.background_popup_3)
