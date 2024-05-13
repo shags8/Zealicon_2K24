@@ -1,5 +1,7 @@
 package com.zealicon_2024.api
 
+import com.zealicon_2024.models.OTPVerifyRequest
+import com.zealicon_2024.models.OTPVerifyResponse
 import com.zealicon_2024.models.SignupRequest
 import com.zealicon_2024.models.SignupResponse
 import retrofit2.Response
@@ -10,6 +12,6 @@ interface SignupAPI {
     @POST("/api/auth/signup")
     suspend fun signupUser(@Body signupRequest: SignupRequest): Response<SignupResponse>
 
-//    @POST("/api/auth/login")
-//    suspend fun loginUser(@Body )
+    @POST("/api/auth/login")
+    suspend fun loginUser(@Body otpVerifyRequest: OTPVerifyRequest): Response<OTPVerifyResponse>
 }

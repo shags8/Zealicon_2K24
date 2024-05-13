@@ -17,7 +17,6 @@ class SignupRepository @Inject constructor(private val signupAPI: SignupAPI) {
     val signupLiveData: LiveData<NetworkResult<SignupResponse>> get() = _signupLiveData
 
 
-
     suspend fun signupUser(signupRequest: SignupRequest){
         _signupLiveData.postValue(NetworkResult.Loading())
         val response = signupAPI.signupUser(signupRequest)

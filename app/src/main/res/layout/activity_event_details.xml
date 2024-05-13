@@ -331,33 +331,4 @@
 
     </androidx.core.widget.NestedScrollView>
 
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/logoutButton"       android:background="#2B0447"
-        />
-
-
-    <ImageView
-        android:id="@+id/logoutButton"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="20dp"
-        android:layout_marginBottom="20dp"
-        android:layout_marginTop="40dp"
-        android:clickable="true"
-        android:focusable="true"
-        android:background="@drawable/round_outline"
-        android:clipToOutline="true"
-        android:foreground="?android:attr/selectableItemBackgroundBorderless"
-        android:src="@drawable/registerevent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
-
-
 </androidx.constraintlayout.widget.ConstraintLayout>
