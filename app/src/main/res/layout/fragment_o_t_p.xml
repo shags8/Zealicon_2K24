@@ -51,9 +51,9 @@
 
     <com.chaos.view.PinView
         android:id="@+id/otp"
-        app:itemCount="4"
-        app:itemWidth="46dp"
-        app:itemHeight="58dp"
+        app:itemCount="6"
+        app:itemWidth="42dp"
+        app:itemHeight="53dp"
         android:gravity="center"
         android:layout_marginTop="30dp"
         android:layout_width="wrap_content"
@@ -63,7 +63,7 @@
         android:layout_gravity="center"
         android:inputType="number"
         android:defaultFocusHighlightEnabled="true"
-        app:itemSpacing="20dp"
+        app:itemSpacing="10dp"
         android:fontFamily="@font/outfit_medium"
         android:textColorHint="#B48CFF"
         app:lineColor="#B48CFF"
