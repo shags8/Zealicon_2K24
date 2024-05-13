@@ -25,6 +25,7 @@ class PurchaseDialogFragment : BottomSheetDialogFragment() {
                 isPayDone = true
             }else{
                 startActivity(Intent(requireContext(), MainActivity::class.java))
+                activity?.finish()
             }
             binding.background.setImageResource(R.drawable.background_popup_2)
             binding.success.isVisible = true
