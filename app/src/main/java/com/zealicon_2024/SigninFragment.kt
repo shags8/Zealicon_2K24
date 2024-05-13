@@ -6,25 +6,19 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
-import com.zealicon_2024.databinding.FragmentLoginBinding
-import dagger.hilt.android.AndroidEntryPoint
+import com.zealicon_2024.databinding.FragmentSigninBinding
 
-@AndroidEntryPoint
-class LoginFragment : Fragment() {
-    var _binding: FragmentLoginBinding? = null
-    val binding get() = _binding!!
+class SigninFragment : Fragment() {
+    private var _binding: FragmentSigninBinding? = null
+    private val binding get() = _binding!!
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?,
     ): View? {
-        _binding = FragmentLoginBinding.inflate(inflater, container, false)
-
-        binding.registerButton.setOnClickListener {
-            findNavController().navigate(R.id.action_loginFragment_to_registerFragment)
-        }
+        _binding = FragmentSigninBinding.inflate(inflater, container, false)
 
         binding.loginButton.setOnClickListener {
-            findNavController().navigate(R.id.action_loginFragment_to_signinFragment)
+            findNavController().navigate(R.id.action_signinFragment_to_OTPFragment)
         }
 
         return binding.root

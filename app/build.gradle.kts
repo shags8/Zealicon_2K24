@@ -1,6 +1,8 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
+    kotlin("kapt")
+    id("com.google.dagger.hilt.android")
 }
 
 android {
@@ -52,4 +54,11 @@ dependencies {
     androidTestImplementation(libs.androidx.espresso.core)
     implementation ("androidx.core:core-splashscreen:1.0.0-beta02")
     implementation("io.github.chaosleung:pinview:1.4.4")
+    implementation ("com.squareup.retrofit2:retrofit:2.9.0")
+    implementation ("com.squareup.retrofit2:converter-gson:2.9.0")
+    implementation ("com.squareup.okhttp3:okhttp:4.9.3")
+    implementation("com.google.dagger:hilt-android:2.46")
+    kapt("com.google.dagger:hilt-android-compiler:2.46")
+    implementation ("com.google.code.gson:gson:2.10")
+
 }
