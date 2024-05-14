@@ -85,6 +85,8 @@ class RegisterFragment : Fragment() {
             val imageString = convertImageToBase64(binding.inputId)
             val image = "data:image/png;base64,$imageString"
 
+            tokenManager.saveName(name)
+
             if (name.isNotEmpty() && phone.isNotEmpty() && admNo.isNotEmpty() && email.isNotEmpty() && image.isNotEmpty()
                 && phone.length == 10 && Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
                 finalEmail=email

@@ -8,6 +8,28 @@
     android:background="@drawable/background_5"
     tools:context=".MainActivity">
 
+    <View
+        android:id="@+id/transparentBg"
+        android:background="#66000000"
+        android:visibility="gone"
+        android:elevation="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        />
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        android:elevation="10dp"
+        android:visibility="gone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:indeterminateTint="#E97E00"
+        />
+
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -17,6 +39,7 @@
 
 
         <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/mainLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/background_4">
@@ -46,42 +69,6 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <com.google.android.material.card.MaterialCardView
-                android:id="@+id/search"
-                android:layout_width="0dp"
-                android:layout_height="56dp"
-                android:layout_marginHorizontal="20dp"
-                android:layout_marginTop="20dp"
-                android:backgroundTint="#80FFFFFF"
-                android:clickable="true"
-                android:focusable="true"
-                app:cardCornerRadius="43dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/greet"
-                app:strokeColor="#60298B" />
-
-            <ImageView
-                android:id="@+id/search_img"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
-                android:src="@drawable/search"
-                app:layout_constraintBottom_toBottomOf="@+id/search"
-                app:layout_constraintStart_toStartOf="@+id/greet"
-                app:layout_constraintTop_toTopOf="@+id/search" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:fontFamily="@font/outfit_medium"
-                android:text="Search Events"
-                android:textColor="@color/white"
-                android:textSize="18sp"
-                app:layout_constraintBottom_toBottomOf="@+id/search"
-                app:layout_constraintStart_toEndOf="@+id/search_img"
-                app:layout_constraintTop_toTopOf="@+id/search" />
 
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/buyZeal"
@@ -93,7 +80,7 @@
                 app:cardCornerRadius="12dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/search">
+                app:layout_constraintTop_toBottomOf="@id/greet">
 
                 <ImageView
                     android:layout_width="match_parent"
@@ -104,6 +91,35 @@
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
+
+
+                    <TextView
+                        android:id="@+id/zealAvailText"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginHorizontal="20dp"
+                        android:fontFamily="@font/outfit_regular"
+                        android:text="You have to show your Entry Pass at the gate to enter the Zealicon"
+                        android:textColor="@color/white"
+                        android:visibility="gone"
+                        android:textSize="12sp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <ImageView
+                        android:id="@+id/showZealButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        android:src="@drawable/zeal_button"
+                        android:layout_marginTop="40dp"
+                        android:visibility="gone"
+                        />
 
                     <TextView
                         android:id="@+id/head"
@@ -119,6 +135,7 @@
                         app:layout_constraintTop_toTopOf="parent" />
 
                     <TextView
+                        android:id="@+id/desc"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="10dp"
@@ -191,6 +208,22 @@
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
 
+                    <TextView
+                        android:id="@+id/secondTime"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintStart_toStartOf="@id/hourHead"
+                        app:layout_constraintEnd_toEndOf="@id/hourHead"
+                        app:layout_constraintTop_toTopOf="@id/hourHead"
+                        app:layout_constraintBottom_toBottomOf="@id/hourHead"
+                        android:elevation="10dp"
+                        android:text="HOURS"
+                        android:textColor="@color/white"
+                        android:fontFamily="@font/gulfsdisplay_condensed"
+                        android:textSize="18sp"
+                        />
+
+
                     <ImageView
                         android:id="@+id/hourHead"
                         android:layout_width="0dp"
@@ -198,10 +231,24 @@
                         android:layout_marginLeft="10dp"
                         android:layout_marginTop="40dp"
                         android:layout_marginRight="20dp"
-                        android:src="@drawable/hour_head"
+                        android:src="@drawable/day_head"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toEndOf="@+id/dayHead"
                         app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/firstTime"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintStart_toStartOf="@id/dayHead"
+                        app:layout_constraintEnd_toEndOf="@id/dayHead"
+                        app:layout_constraintTop_toTopOf="@id/dayHead"
+                        app:layout_constraintBottom_toBottomOf="@id/dayHead"
+                        android:text="DAYS"
+                        android:textColor="@color/white"
+                        android:fontFamily="@font/gulfsdisplay_condensed"
+                        android:textSize="18sp"
+                        />
 
                     <ImageView
                         android:id="@+id/d1"
