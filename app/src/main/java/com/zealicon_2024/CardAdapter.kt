@@ -10,7 +10,6 @@ class CardAdapter(private val cardList: List<Card>) : RecyclerView.Adapter<CardA
 
     var onItemClick: ((String) -> Unit)? = null
 
-
     inner class CardViewHolder(val binding: CategoryCardItemBinding) : RecyclerView.ViewHolder(binding.root) {
 
     }
