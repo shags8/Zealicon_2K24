@@ -15,7 +15,7 @@ class EventsAdapter(
 ) : RecyclerView.Adapter<EventsAdapter.ViewHolder>() {
 
 
-    var onItemClick: (() -> Unit)? = null
+    var onItemClick: ((Int) -> Unit)? = null
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val image: ImageView = itemView.findViewById(R.id.eventImage)
@@ -35,11 +35,11 @@ class EventsAdapter(
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val cardList = list[position]
-        holder.day.text ="Day 1"
+        holder.day.text = cardList.date
         holder.image.setImageResource(R.drawable.event_image)
-        holder.event.text="LineUp"
+        holder.event.text= cardList.name
         holder.itemView.setOnClickListener{
-            onItemClick?.invoke()
+            onItemClick?.invoke(position)
         }
 
     }

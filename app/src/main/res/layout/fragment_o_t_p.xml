@@ -40,7 +40,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/otpHead"
         android:layout_marginTop="10dp"
-        android:text="Enter the OTP sent to your Phone No."
+        android:text="Enter the OTP sent to your Email"
         android:fontFamily="@font/outfit_regular"
         android:layout_marginHorizontal="20dp"
         android:gravity="center"

@@ -47,42 +47,6 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <com.google.android.material.card.MaterialCardView
-                android:id="@+id/search"
-                android:layout_width="0dp"
-                android:layout_height="56dp"
-                android:layout_marginHorizontal="20dp"
-                android:layout_marginTop="20dp"
-                android:backgroundTint="#80FFFFFF"
-                android:clickable="true"
-                android:focusable="true"
-                app:cardCornerRadius="43dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/greet"
-                app:strokeColor="#60298B" />
-
-            <ImageView
-                android:id="@+id/search_img"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
-                android:src="@drawable/search"
-                app:layout_constraintBottom_toBottomOf="@+id/search"
-                app:layout_constraintStart_toStartOf="@+id/greet"
-                app:layout_constraintTop_toTopOf="@+id/search" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:fontFamily="@font/outfit_medium"
-                android:text="Search Events"
-                android:textColor="@color/white"
-                android:textSize="18sp"
-                app:layout_constraintBottom_toBottomOf="@+id/search"
-                app:layout_constraintStart_toEndOf="@+id/search_img"
-                app:layout_constraintTop_toTopOf="@+id/search" />
 
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/buyZeal"
@@ -94,7 +58,7 @@
                 app:cardCornerRadius="12dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/search">
+                app:layout_constraintTop_toBottomOf="@id/greet">
 
                 <ImageView
                     android:layout_width="match_parent"
@@ -192,6 +156,22 @@
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
 
+                    <TextView
+                        android:id="@+id/secondTime"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintStart_toStartOf="@id/hourHead"
+                        app:layout_constraintEnd_toEndOf="@id/hourHead"
+                        app:layout_constraintTop_toTopOf="@id/hourHead"
+                        app:layout_constraintBottom_toBottomOf="@id/hourHead"
+                        android:elevation="10dp"
+                        android:text="HOURS"
+                        android:textColor="@color/white"
+                        android:fontFamily="@font/gulfsdisplay_condensed"
+                        android:textSize="18sp"
+                        />
+
+
                     <ImageView
                         android:id="@+id/hourHead"
                         android:layout_width="0dp"
@@ -199,10 +179,24 @@
                         android:layout_marginLeft="10dp"
                         android:layout_marginTop="40dp"
                         android:layout_marginRight="20dp"
-                        android:src="@drawable/hour_head"
+                        android:src="@drawable/day_head"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toEndOf="@+id/dayHead"
                         app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/firstTime"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintStart_toStartOf="@id/dayHead"
+                        app:layout_constraintEnd_toEndOf="@id/dayHead"
+                        app:layout_constraintTop_toTopOf="@id/dayHead"
+                        app:layout_constraintBottom_toBottomOf="@id/dayHead"
+                        android:text="DAYS"
+                        android:textColor="@color/white"
+                        android:fontFamily="@font/gulfsdisplay_condensed"
+                        android:textSize="18sp"
+                        />
 
                     <ImageView
                         android:id="@+id/d1"
