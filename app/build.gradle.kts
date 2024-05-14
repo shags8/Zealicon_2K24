@@ -64,5 +64,7 @@ dependencies {
     kapt("com.google.dagger:hilt-android-compiler:2.46")
     implementation ("com.google.code.gson:gson:2.10")
     implementation ("com.razorpay:checkout:1.6.38")
+    implementation ("com.github.bumptech.glide:glide:4.13.0")
+    annotationProcessor ("com.github.bumptech.glide:compiler:4.12.0")
 
 }

@@ -11,6 +11,7 @@ import android.util.Log
 import android.view.WindowManager
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.isVisible
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
@@ -34,9 +35,9 @@ class MainActivity : AppCompatActivity() {
     private var eventsList: ArrayList<EventCard> = ArrayList()
     private lateinit var countDownTimer: CountDownTimer
     private val db = FirebaseDatabase.getInstance().reference
-
     @Inject
     lateinit var tokenManager: TokenManager
+    var isZeal = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -51,9 +52,32 @@ class MainActivity : AppCompatActivity() {
         Log.d("KING1234", "$zeal , $name, $image")
 
         startTimer()
+
+        if(tokenManager.getZeal() != null && tokenManager.getZeal() != ""){
+            isZeal = true
+            binding.head.isVisible = false
+            binding.desc.isVisible = false
+            binding.buyZealButton.isVisible = false
+            binding.zealAvailText.isVisible = true
+            binding.showZealButton.isVisible = true
+        }else{
+            isZeal = false
+            binding.head.isVisible = true
+            binding.desc.isVisible = true
+            binding.buyZealButton.isVisible = true
+            binding.zealAvailText.isVisible = false
+            binding.showZealButton.isVisible = false
+        }
+
+
         binding.buyZeal.setOnClickListener {
-            val purchaseDialogPopup = PurchaseDialogFragment()
-            purchaseDialogPopup.show(supportFragmentManager, "BSDialogFragment")
+            if(!isZeal){
+                val purchaseDialogPopup = PurchaseDialogFragment()
+                purchaseDialogPopup.show(supportFragmentManager, "BSDialogFragment")
+            }else{
+                startActivity(Intent(this, ZealTicketActivity::class.java))
+            }
+
         }
 
         binding.menuButton.setOnClickListener {
