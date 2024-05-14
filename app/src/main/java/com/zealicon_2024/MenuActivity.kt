@@ -8,9 +8,15 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.zealicon_2024.databinding.ActivityMenuBinding
+import com.zealicon_2024.utils.TokenManager
+import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
+@AndroidEntryPoint
 class MenuActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMenuBinding
+    @Inject
+    lateinit var tokenManager: TokenManager
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -51,6 +57,11 @@ class MenuActivity : AppCompatActivity() {
                 intent.setPackage(null)
                 startActivity(intent)
             }
+        }
+
+        binding.logoutButton.setOnClickListener {
+            tokenManager.saveName("")
+            tokenManager.saveToken("")
         }
     }
 

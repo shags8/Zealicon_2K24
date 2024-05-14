@@ -5,6 +5,7 @@ import com.zealicon_2024.utils.Constants.PHONE_NUMBER
 import com.zealicon_2024.utils.Constants.ID_CARD
 import com.zealicon_2024.utils.Constants.NAME
 import com.zealicon_2024.utils.Constants.PREFS_TOKEN_FILE
+import com.zealicon_2024.utils.Constants.USER_ID
 import com.zealicon_2024.utils.Constants.USER_TOKEN
 import com.zealicon_2024.utils.Constants.ZEAL_ID
 import dagger.hilt.android.qualifiers.ApplicationContext
@@ -42,6 +43,18 @@ class TokenManager@Inject constructor(@ApplicationContext context: Context ) {
         editor.putString(NAME, name)
         editor.apply()
     }
+
+    fun saveUserId(userId: String?) {
+        val editor = prefs.edit()
+        editor.putString(USER_ID, userId)
+        editor.apply()
+    }
+
+    fun getUserId(): String?{
+        return prefs.getString(USER_ID, null)
+    }
+
+
     fun saveID(id: String?) {
         val editor = prefs.edit()
         editor.putString(ID_CARD, id)

@@ -96,6 +96,7 @@ class SignupRepository @Inject constructor(private val signupAPI: SignupAPI ,
                     if(response.body()!!.message=="Verified successfully") {
                         Log.e("otpResponse", "${response.body()}")
                         tokenManager.saveToken(response.body()!!.token)
+                        tokenManager.saveUserId(response.body()!!._id)
                         Toast.makeText(context, "OTP verified", Toast.LENGTH_SHORT).show()
                         Log.e("token", "${tokenManager.getToken()}")
                     }

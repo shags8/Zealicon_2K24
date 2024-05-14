@@ -17,9 +17,13 @@ import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import com.zealicon_2024.adapters.EventsAdapter
+import com.zealicon_2024.api.SignupAPI
 import com.zealicon_2024.databinding.ActivityMainBinding
 import com.zealicon_2024.utils.TokenManager
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 import java.util.Timer
 import java.util.TimerTask
 import java.util.concurrent.TimeUnit
@@ -35,8 +39,12 @@ class MainActivity : AppCompatActivity() {
     private var eventsList: ArrayList<EventCard> = ArrayList()
     private lateinit var countDownTimer: CountDownTimer
     private val db = FirebaseDatabase.getInstance().reference
+
     @Inject
     lateinit var tokenManager: TokenManager
+
+    @Inject
+    lateinit var signupAPI: SignupAPI
     var isZeal = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -44,6 +52,8 @@ class MainActivity : AppCompatActivity() {
         enableEdgeToEdge()
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        val token = tokenManager.getToken().toString()
 
         val zeal = tokenManager.getZeal()
         val name = tokenManager.getName()
@@ -53,14 +63,14 @@ class MainActivity : AppCompatActivity() {
 
         startTimer()
 
-        if(tokenManager.getZeal() != null && tokenManager.getZeal() != ""){
+        if (tokenManager.getZeal() != null && tokenManager.getZeal() != "") {
             isZeal = true
             binding.head.isVisible = false
             binding.desc.isVisible = false
             binding.buyZealButton.isVisible = false
             binding.zealAvailText.isVisible = true
             binding.showZealButton.isVisible = true
-        }else{
+        } else {
             isZeal = false
             binding.head.isVisible = true
             binding.desc.isVisible = true
@@ -69,15 +79,41 @@ class MainActivity : AppCompatActivity() {
             binding.showZealButton.isVisible = false
         }
 
+        if (!isZeal) {
+            binding.progressBar.isVisible = true
+            binding.mainLayout.isVisible = false
+            binding.transparentBg.isVisible = true
+            CoroutineScope(Dispatchers.IO).launch {
+                val response = signupAPI.getZealId(token)
+//                if (response.body()?.success!!) {
+                    binding.mainLayout.isVisible = true
+                    binding.transparentBg.isVisible = false
+                    binding.progressBar.isVisible = false
+                    isZeal = true
+                    tokenManager.saveZeal(response.body()!!.zeal_id)
+                    tokenManager.saveName(response.body()!!.userData.name)
+                    tokenManager.saveUserId(response.body()!!.userData.secure_url)
+//                }
+            }
+        } else {
+            binding.mainLayout.isVisible = true
+            binding.transparentBg.isVisible = false
+            binding.progressBar.isVisible = false
+            isZeal = false
+        }
+
+
+
+
+
 
         binding.buyZeal.setOnClickListener {
-            if(!isZeal){
+            if (!isZeal) {
                 val purchaseDialogPopup = PurchaseDialogFragment()
                 purchaseDialogPopup.show(supportFragmentManager, "BSDialogFragment")
-            }else{
+            } else {
                 startActivity(Intent(this, ZealTicketActivity::class.java))
             }
-
         }
 
         binding.menuButton.setOnClickListener {

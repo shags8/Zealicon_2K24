@@ -18,6 +18,7 @@ import com.zealicon_2024.databinding.FragmentPurchaseDialogBinding
 import com.zealicon_2024.models.OrderRequest
 import com.zealicon_2024.utils.Constants.TAG
 import com.zealicon_2024.utils.Constants.isPayDone
+import com.zealicon_2024.utils.TokenManager
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -32,11 +33,18 @@ class PurchaseDialogFragment : BottomSheetDialogFragment(){
 
     @Inject
     lateinit var paymentAPI: PaymentAPI
+    @Inject
+    lateinit var tokenManager: TokenManager
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?,
     ): View? {
         _binding = FragmentPurchaseDialogBinding.inflate(inflater, container, false)
+
+        binding.continueText.setOnClickListener {
+            startActivity(Intent(requireContext(), MainActivity::class.java))
+            activity?.finish()
+        }
 
         if(isPayDone == 2){
             binding.background.setImageResource(R.drawable.background_popup_2)
@@ -70,7 +78,9 @@ class PurchaseDialogFragment : BottomSheetDialogFragment(){
         binding.payButton.setOnClickListener {
             if(isPayDone == 1 || isPayDone == 3){
                 CoroutineScope(Dispatchers.IO).launch {
-                    val res = paymentAPI.getOrderID(OrderRequest("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjQzNmJhMzNkMmU5OTBkM2M5NWE1NWYiLCJpYXQiOjE3MTU2OTQ2MzYsImV4cCI6MTcxNjU1ODYzNn0.xQaJVxeV2olArbtv5dWucd67ndjvQHxwYX0n7_5S45g"))
+                    val token = tokenManager.getToken().toString()
+                    Log.d("KING123", "$token")
+                    val res = paymentAPI.getOrderID(OrderRequest(token))
                     Log.d("KING", "onCreateView: ${res.body()?.order?.id}")
                     val orderId = res.body()?.order?.id
                     val intent = Intent(requireContext(), PaymentActivity::class.java)

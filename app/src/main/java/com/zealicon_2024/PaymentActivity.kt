@@ -23,6 +23,7 @@ import kotlinx.coroutines.launch
 import org.json.JSONObject
 import retrofit2.Response
 import javax.inject.Inject
+import kotlin.math.log
 
 @AndroidEntryPoint
 class PaymentActivity : AppCompatActivity(), PaymentResultWithDataListener {
@@ -40,12 +41,12 @@ class PaymentActivity : AppCompatActivity(), PaymentResultWithDataListener {
 
         Checkout.preload(applicationContext)
         val co = Checkout()
-        co.setKeyID("rzp_test_PAwtkqQWXW4Qe0")
+        co.setKeyID("rzp_live_XFKbiwn0rPna6O")
         try{
             val option = JSONObject()
             option.put("name", "Zealicon 2024")
             option.put("currency", "INR")
-            option.put("amount", "100")
+            option.put("amount", "20000")
             option.put("order_id", "$orderId")
 //            val prefill = JSONObject()
 //            prefill.put("email", "ayushmaserati@gmail.com")
@@ -67,11 +68,15 @@ class PaymentActivity : AppCompatActivity(), PaymentResultWithDataListener {
         Log.d("KING", "onPaymentSuccess: ${p1?.paymentId}, ${p1?.orderId}, ${p1?.signature}, ${p1?.data} ")
         var res : Response<SignupResponse>? = null
         CoroutineScope(Dispatchers.IO).launch {
-            res = signupAPI.paymentVerify("66436ba33d2e990d3c95a55f", PaymentVerifyRequest(p1!!.orderId, p1.paymentId, p1.signature))
+            val _id = tokenManager.getUserId().toString()
+            Log.d("KING123", _id)
+            res = signupAPI.paymentVerify(_id, PaymentVerifyRequest(p1!!.orderId, p1.paymentId, p1.signature))
         }
 //        if(res!!.body()!!.success){
             CoroutineScope(Dispatchers.IO).launch {
-                val response = signupAPI.getZealId("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjQzNmJhMzNkMmU5OTBkM2M5NWE1NWYiLCJpYXQiOjE3MTU2OTQ2MzYsImV4cCI6MTcxNjU1ODYzNn0.xQaJVxeV2olArbtv5dWucd67ndjvQHxwYX0n7_5S45g")
+                val token = tokenManager.getToken().toString()
+                Log.d("KING", "$token")
+                val response = signupAPI.getZealId(token)
                 val zeal = response.body()?.zeal_id
                 val idCard = response.body()?.userData?.secure_url
                 val name = response.body()?.userData?.name
