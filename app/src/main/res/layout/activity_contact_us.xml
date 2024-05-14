@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background_5"
+    tools:context=".ContactUs">
+
+   <androidx.core.widget.NestedScrollView
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       app:layout_constraintStart_toStartOf="parent"
+       app:layout_constraintEnd_toEndOf="parent"
+       app:layout_constraintTop_toTopOf="parent">
+
+       <androidx.constraintlayout.widget.ConstraintLayout
+           android:layout_width="match_parent"
+           android:layout_height="match_parent"
+           android:background="@drawable/background_4">
+
+           <ImageView
+               android:id="@+id/back"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               app:layout_constraintTop_toTopOf="parent"
+               app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginTop="60dp"
+               android:layout_marginStart="20dp"
+               android:src="@drawable/back_button"
+               android:elevation="10dp"
+               />
+
+           <TextView
+               android:id="@+id/contactUs"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:text="Contact Us"
+               app:layout_constraintTop_toTopOf="@id/back"
+               app:layout_constraintBottom_toBottomOf="@id/back"
+               app:layout_constraintStart_toEndOf="@id/back"
+               android:layout_marginStart="10dp"
+               android:textColor="@color/white"
+               android:elevation="10dp"
+               android:fontFamily="@font/outfit_medium"
+               android:textSize="32sp"
+               />
+           
+           <ImageView
+               android:id="@+id/map"
+               android:layout_width="0dp"
+               android:layout_height="wrap_content"
+               android:src="@drawable/contact_us"
+               app:layout_constraintTop_toBottomOf="@id/contactUs"
+               app:layout_constraintStart_toStartOf="parent"
+               app:layout_constraintEnd_toEndOf="parent"
+               android:layout_marginHorizontal="16dp"
+               android:layout_marginTop="52dp"
+               />
+
+           <androidx.recyclerview.widget.RecyclerView
+               android:id="@+id/contact_people"
+               android:layout_width="0dp"
+               android:layout_height="wrap_content"
+               android:layout_marginTop="10dp"
+               app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+               app:spanCount="2"
+               tools:itemCount="4"
+               app:layout_constraintStart_toStartOf="@id/map"
+               app:layout_constraintTop_toBottomOf="@id/map"
+               app:layout_constraintEnd_toEndOf="@id/map"
+               tools:listitem="@layout/team_item"/>
+
+
+       </androidx.constraintlayout.widget.ConstraintLayout>
+   </androidx.core.widget.NestedScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
