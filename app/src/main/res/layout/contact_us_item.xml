@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="270dp"
+    android:layout_height="wrap_content"
     android:layout_marginStart="5dp"
     android:layout_marginTop="10dp"
     android:layout_marginEnd="5dp"
@@ -19,66 +19,61 @@
         <ImageView
             android:id="@+id/eventImage"
             android:layout_width="match_parent"
-            android:layout_height="204dp"
             android:scaleType="centerCrop"
-            android:src="@drawable/event_image"
+            android:layout_height="204dp"
+            android:src="@drawable/team_image"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:layout_constraintBottom_toBottomOf="@id/eventImage"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:src="@drawable/decor"
-            android:layout_marginBottom="-5dp"
-            />
-
-
         <TextView
-            android:id="@+id/eventDateCategory"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:fontFamily="@font/outfit_regular"
-            android:singleLine="true"
-            android:textAlignment="center"
-            android:textColor="@color/white"
-            app:layout_constraintBottom_toTopOf="@id/eventTitle"
-            android:textSize="12sp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/eventImage"
-            tools:text="Day 1" />
-
-        <TextView
-            android:id="@+id/eventTitle"
+            android:id="@+id/title"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
             android:layout_marginBottom="5dp"
             android:fontFamily="@font/outfit_semibold"
             android:singleLine="true"
             android:textColor="@color/white"
-            android:textSize="18sp"
+            android:textSize="12sp"
             android:textStyle="bold"
+            android:gravity="center"
             app:layout_constraintBottom_toBottomOf="parent"
-            android:gravity="left"
-            app:layout_constraintEnd_toStartOf="@id/go"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/eventDateCategory"
-            tools:text="Line Up" />
+            app:layout_constraintStart_toStartOf="@id/eventImage"
+            app:layout_constraintEnd_toEndOf="@id/eventImage"
+            app:layout_constraintTop_toBottomOf="@+id/eventImage"
+            tools:text="Fest Secretary" />
 
-        <ImageView
-            android:id="@+id/go"
+
+        <TextView
+            android:id="@+id/post"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/outfit_regular"
+            android:singleLine="true"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            app:layout_constraintBottom_toTopOf="@id/name"
+            android:textSize="18sp"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/eventImage"
-            android:layout_marginEnd="20dp"
-            android:src="@drawable/go"
-            />
+            app:layout_constraintTop_toBottomOf="@id/title"
+            tools:text="Prakhar Sharma" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+        <TextView
+            android:id="@+id/name"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:fontFamily="@font/outfit_semibold"
+            android:singleLine="true"
+            android:textColor="@color/white"
+            android:textSize="12sp"
+            android:textStyle="bold"
+            android:gravity="center"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/post"
+            tools:text="0000000000" />
+
+     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </com.google.android.material.card.MaterialCardView>

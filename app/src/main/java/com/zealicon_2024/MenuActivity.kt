@@ -23,6 +23,15 @@ class MenuActivity : AppCompatActivity() {
 
         binding.teamCard.setOnClickListener{
             startActivity(Intent(this, TeamActivity::class.java))
+            finish()
+        }
+        binding.ContactUsCard.setOnClickListener{
+            startActivity(Intent(this,ContactUs::class.java))
+            finish()
+        }
+        binding.aboutUsCard.setOnClickListener{
+            startActivity(Intent(this,AboutActivity::class.java))
+            finish()
         }
     }
 

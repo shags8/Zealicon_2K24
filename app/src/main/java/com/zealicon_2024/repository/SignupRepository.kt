@@ -98,6 +98,7 @@ class SignupRepository @Inject constructor(private val signupAPI: SignupAPI ,
                         tokenManager.saveToken(response.body()!!.token)
                         Toast.makeText(context, "OTP verified", Toast.LENGTH_SHORT).show()
                         Log.e("token", "${tokenManager.getToken()}")
+
                     }
                 }else if (response.errorBody() != null){
                     val errObj = JSONObject(response.errorBody()!!.charStream().readText())

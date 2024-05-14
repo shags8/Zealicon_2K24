@@ -19,11 +19,12 @@ class ContactUsAdapter(
         val image: ImageView = itemView.findViewById(R.id.eventImage)
         val name: TextView = itemView.findViewById(R.id.post)
         val number: TextView = itemView.findViewById(R.id.name)
+        val role:TextView=itemView.findViewById(R.id.title)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val context = parent.context
-        val view = LayoutInflater.from(context).inflate(R.layout.team_item, parent, false)
+        val view = LayoutInflater.from(context).inflate(R.layout.contact_us_item, parent, false)
         return ViewHolder(view)
     }
 
@@ -36,6 +37,6 @@ class ContactUsAdapter(
         holder.image.setImageResource(cardList.photo)
         holder.number.text=cardList.number
         holder.name.text=cardList.name
-
+        holder.role.text="Fest Secretary"
     }
 }

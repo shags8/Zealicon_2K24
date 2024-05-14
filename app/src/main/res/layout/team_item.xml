@@ -24,7 +24,6 @@
             android:src="@drawable/team_image"
             app:layout_constraintTop_toTopOf="parent" />
 
-
         <ImageView
             android:id="@+id/decor"
             android:layout_width="wrap_content"
@@ -48,7 +47,7 @@
             android:textAlignment="center"
             android:textColor="@color/white"
             app:layout_constraintBottom_toTopOf="@id/name"
-            android:textSize="16sp"
+            android:textSize="12sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@id/eventImage"
@@ -62,7 +61,7 @@
             android:fontFamily="@font/outfit_regular"
             android:singleLine="true"
             android:textColor="@color/white"
-            android:textSize="12sp"
+            android:textSize="18sp"
             android:textStyle="bold"
             android:gravity="center"
             app:layout_constraintBottom_toBottomOf="parent"

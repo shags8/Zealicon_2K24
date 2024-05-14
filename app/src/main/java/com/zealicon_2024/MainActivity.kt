@@ -10,7 +10,10 @@ import android.os.CountDownTimer
 import android.util.Log
 import android.view.WindowManager
 import androidx.activity.enableEdgeToEdge
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
+import androidx.core.content.ContextCompat.startActivity
 import com.zealicon_2024.adapters.EventsAdapter
 import com.zealicon_2024.databinding.ActivityMainBinding
 import dagger.hilt.android.AndroidEntryPoint
@@ -70,9 +73,9 @@ class MainActivity : AppCompatActivity() {
         adapter = CardAdapter(events)
         binding.rv.adapter = adapter
         adapter.onItemClick = {
-            if(it.equals("Cultural Events")){
+            if (it.equals("Cultural Events")) {
                 startActivity(Intent(this, CulturalEvents::class.java))
-            }else{
+            } else {
                 startActivity(Intent(this, TechnicalEvent::class.java))
             }
         }
@@ -113,7 +116,7 @@ class MainActivity : AppCompatActivity() {
             if (currentPage == NUM_PAGES) {
                 currentPage = 0
             }
-            binding.rv.setCurrentItem(currentPage++, true) // Smoothly scroll to the next page
+            binding.rv.setCurrentItem(currentPage++, true)
         }
         timer.schedule(object : TimerTask() {
             override fun run() {
@@ -126,7 +129,23 @@ class MainActivity : AppCompatActivity() {
     private fun calculateTime(millisUntilFinished: Long): String {
         val days = millisUntilFinished / (1000 * 60 * 60 * 24)
         val hours = millisUntilFinished % (1000 * 60 * 60 * 24) / (1000 * 60 * 60)
-
         return String.format("%02d:%02d", days, hours)
+    }
+
+
+    override fun onBackPressed() {
+        AlertDialog.Builder(this)
+            .setTitle("Exit")
+            .setMessage("Are you sure?")
+            .setPositiveButton("Yes") { dialog, which ->
+                val intent = Intent(Intent.ACTION_MAIN)
+                intent.addCategory(Intent.CATEGORY_HOME)
+                intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
+                startActivity(intent)
+            }
+            .setNegativeButton("No") { dialog, which ->
+                // Handle "no" button click or remove this block if not needed
+            }
+            .show()
     }
 }
