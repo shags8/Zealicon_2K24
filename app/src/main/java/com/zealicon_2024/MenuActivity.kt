@@ -69,8 +69,7 @@ class MenuActivity : AppCompatActivity() {
         }
 
         binding.logoutButton.setOnClickListener {
-            tokenManager.saveName("")
-            tokenManager.saveToken("")
+            tokenManager.clearSharedPreferences()
         }
     }
 

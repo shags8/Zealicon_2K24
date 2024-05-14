@@ -4,7 +4,7 @@ import com.zealicon_2024.api.AuthInterceptor
 import com.zealicon_2024.api.PaymentAPI
 import com.zealicon_2024.api.SignupAPI
 import com.zealicon_2024.utils.Constants.BASE_URL
-import com.zealicon_2024.utils.Constants.BASE_URL2
+import com.zealicon_2024.utils.RemoteConfigHelper
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -22,10 +22,10 @@ import javax.inject.Qualifier
 @InstallIn(SingletonComponent::class)
 @Module
 class NetworkModule {
-
     @Singleton
     @Provides
     fun providesRetrofitBuilder(): Retrofit.Builder {
+        RemoteConfigHelper.fetchAndActivate()
         return Retrofit.Builder()
             .addConverterFactory(GsonConverterFactory.create())
             .baseUrl(BASE_URL)

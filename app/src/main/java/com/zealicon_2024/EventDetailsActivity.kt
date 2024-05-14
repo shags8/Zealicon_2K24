@@ -6,6 +6,7 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.bumptech.glide.Glide
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
@@ -45,6 +46,7 @@ class EventDetailsActivity : AppCompatActivity() {
                 val phone = it.child("phone").getValue(Long::class.java)!!.toLong()
                 val venue = it.child("venue").getValue(String::class.java).toString()
                 val prize = it.child("prize").getValue(String::class.java).toString()
+                val bannerImage = it.child("bannerPhoto").getValue(String::class.java).toString()
 
                 binding.eventName.text = name
                 binding.prize.text = prize
@@ -53,6 +55,7 @@ class EventDetailsActivity : AppCompatActivity() {
                 binding.time.text = time
                 binding.phone.text = phone.toString()
                 binding.venue.text = venue
+                Glide.with(this@EventDetailsActivity).load(bannerImage).into(binding.eventImage)
 
             }
 
