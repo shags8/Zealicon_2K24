@@ -52,7 +52,7 @@
                 android:layout_marginLeft="30dp"
                 android:layout_marginTop="60dp"
                 android:fontFamily="@font/outfit_medium"
-                android:text="Hello Ayush"
+                android:text="Hello There"
                 android:textColor="@color/white"
                 android:textSize="28sp"
                 app:layout_constraintStart_toStartOf="parent"

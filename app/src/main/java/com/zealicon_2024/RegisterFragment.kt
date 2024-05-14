@@ -54,8 +54,10 @@ class RegisterFragment : Fragment() {
     private val contract = registerForActivityResult(ActivityResultContracts.TakePicture()) {
         if (it) {
             currentImageView!!.setImageURI(imageUri)
+            imageAdded = true
         } else {
             currentImageView!!.setImageResource(R.drawable.upload_id)
+            imageAdded = false
         }
 //        currentImageView!!.setImageURI(null)
     }
@@ -82,15 +84,30 @@ class RegisterFragment : Fragment() {
             val phone = binding.inputPhone.text.toString()
             val email = binding.inputEmail.text.toString()
             val admNo = binding.inputAdmNo.text.toString()
-            val imageString = convertImageToBase64(binding.inputId)
-            val image = "data:image/png;base64,$imageString"
+            var image : String = ""
+            if(imageAdded){
+                val imageString = convertImageToBase64(binding.inputId)
+                image = "data:image/png;base64,$imageString"
+            }else{
+                Toast.makeText(requireContext(), "Please upload your ID card.", Toast.LENGTH_SHORT).show()
+            }
+
 
             tokenManager.saveName(name)
 
-            if (name.isNotEmpty() && phone.isNotEmpty() && admNo.isNotEmpty() && email.isNotEmpty() && image.isNotEmpty()
+            if (name.isNotEmpty() && phone.isNotEmpty() && admNo.isNotEmpty() && email.isNotEmpty()
                 && phone.length == 10 && Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
                 finalEmail=email
-                signupViewModel.signupUser(SignupRequest(finalEmail, image, name, phone))
+                if(!imageAdded){
+                    Toast.makeText(
+                        activity as LoginActivity,
+                        "Please upload your ID Card.",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }else{
+                    signupViewModel.signupUser(SignupRequest(finalEmail, image, name, phone))
+                }
+
             } else {
                 Toast.makeText(
                     activity as LoginActivity,

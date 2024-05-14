@@ -70,6 +70,8 @@ class MenuActivity : AppCompatActivity() {
 
         binding.logoutButton.setOnClickListener {
             tokenManager.clearSharedPreferences()
+            startActivity(Intent(this, LoginActivity::class.java))
+            finishAffinity()
         }
     }
 
