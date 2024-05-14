@@ -65,6 +65,7 @@ class MainActivity : AppCompatActivity() {
         startTimer()
 
         if (tokenManager.getZeal() != null && tokenManager.getZeal() != "") {
+            isZeal = true
             binding.head.isVisible = false
             binding.desc.isVisible = false
             binding.buyZealButton.isVisible = false
@@ -78,12 +79,13 @@ class MainActivity : AppCompatActivity() {
                 val response = signupAPI.getZealId(token)
                 Log.d("KING689", response.body().toString())
                 if (response.body()?.success == true) {
+                    isZeal = true
                     binding.mainLayout.isVisible = true
                     binding.transparentBg.isVisible = false
                     binding.progressBar.isVisible = false
                     tokenManager.saveZeal(response.body()!!.zeal_id)
                     tokenManager.saveName(response.body()!!.userData.name)
-                    tokenManager.saveUserId(response.body()!!.userData.secure_url)
+                    tokenManager.saveID(response.body()!!.userData.secure_url)
                 }
                 else{
                     binding.mainLayout.isVisible = true

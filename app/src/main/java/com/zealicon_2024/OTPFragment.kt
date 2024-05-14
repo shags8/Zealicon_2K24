@@ -1,5 +1,6 @@
 package com.zealicon_2024
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -63,8 +64,14 @@ class OTPFragment : Fragment() {
                                     Toast.makeText(context, "OTP verified", Toast.LENGTH_SHORT).show()
                                     Log.e("token", "${tokenManager.getToken()}")
                                     Log.e("_id", "${tokenManager.getUserId()}")
-                                    val purchaseDialogPopup = PurchaseDialogFragment()
-                                    purchaseDialogPopup.show(childFragmentManager, "BSDialogFragment")
+                                    val activity = activity as LoginActivity
+                                    if(activity.isLogin == 1){
+                                        startActivity(Intent(requireContext(), MainActivity::class.java))
+                                        getActivity()?.finish()
+                                    }else{
+                                        val purchaseDialogPopup = PurchaseDialogFragment()
+                                        purchaseDialogPopup.show(childFragmentManager, "BSDialogFragment")
+                                    }
                                 }
                             }else if (response.errorBody() != null){
                                 val errObj = JSONObject(response.errorBody()!!.charStream().readText())
@@ -90,7 +97,6 @@ class OTPFragment : Fragment() {
         }
         return binding.root
     }
-
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null

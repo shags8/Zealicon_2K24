@@ -63,28 +63,15 @@
 
             <ImageView
                 android:id="@+id/ticketImage"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_width="339.56dp"
+                android:layout_height="690dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/back"
                 android:layout_marginTop="140dp"
-                android:src="@drawable/zeal_ticket"
+                android:src="@drawable/ticket"
                 android:layout_marginHorizontal="20dp"
                 android:scaleType="fitStart"
-                />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="ZEALICON  TICKET"
-                android:textColor="#2B0447"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/ticketImage"
-                android:layout_marginTop="30dp"
-                android:fontFamily="@font/instagram_sans_bold"
-                android:textSize="32sp"
                 />
 
             <TextView
@@ -113,7 +100,7 @@
                 android:fontFamily="@font/instagram_sans"
                 android:textColor="@color/white"
                 android:textSize="12sp"
-                android:layout_marginBottom="-8dp"
+                android:layout_marginBottom="-5dp"
                 />
 
             <TextView
@@ -123,6 +110,8 @@
                 android:text="ZEAL 12345"
                 android:textColor="@color/white"
                 android:textAllCaps="true"
+                android:singleLine="true"
+                android:maxLines="1"
                 android:gravity="left"
                 app:layout_constraintStart_toStartOf="@id/ticketImage"
                 android:layout_marginLeft="30dp"
@@ -139,7 +128,7 @@
                 android:fontFamily="@font/instagram_sans"
                 android:textColor="@color/white"
                 android:textSize="12sp"
-                android:layout_marginBottom="-8dp"
+                android:layout_marginBottom="-5dp"
                 />
             <TextView
                 android:layout_width="wrap_content"

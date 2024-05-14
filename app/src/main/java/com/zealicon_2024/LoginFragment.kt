@@ -20,10 +20,14 @@ class LoginFragment : Fragment() {
         _binding = FragmentLoginBinding.inflate(inflater, container, false)
 
         binding.registerButton.setOnClickListener {
+            val activity = activity as LoginActivity
+            activity.isLogin = 0
             findNavController().navigate(R.id.action_loginFragment_to_registerFragment)
         }
 
         binding.loginButton.setOnClickListener {
+            val activity = activity as LoginActivity
+            activity.isLogin = 1
             findNavController().navigate(R.id.action_loginFragment_to_signinFragment)
         }
 
