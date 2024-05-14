@@ -1,18 +1,7 @@
 package com.zealicon_2024.utils
-
-import com.google.firebase.Firebase
-import com.google.firebase.remoteconfig.ktx.remoteConfigSettings
-import com.google.firebase.remoteconfig.remoteConfig
-
 object Constants {
-//    val remoteConfig = Firebase.remoteConfig
-//    val configSettings = remoteConfigSettings {
-//        minimumFetchIntervalInSeconds = 3600
-//    }
-//    remoteConfig.setConfigSettingsAsync(configSettings)
-//
-    val BASE_URL = "https://zealicon-api-24.onrender.com/"
-    val BASE_URL2 = "https://api.razorpay.com/"
+    var RAZORPAY_KEY = ""
+    var BASE_URL = ""
     val TAG = "ZEALICON"
     const val PREFS_TOKEN_FILE = "PREFS_TOKEN_FILE"
     const val USER_TOKEN = "USER_TOKEN"

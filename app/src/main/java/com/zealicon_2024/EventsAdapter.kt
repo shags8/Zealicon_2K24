@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.zealicon_2024.R
 
 class EventsAdapter(
@@ -36,6 +37,7 @@ class EventsAdapter(
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val cardList = list[position]
         holder.day.text = cardList.date
+        Glide.with(holder.itemView.context).load(cardList.image).into(holder.image)
         holder.image.setImageResource(R.drawable.event_image)
         holder.event.text= cardList.name
         holder.itemView.setOnClickListener{
