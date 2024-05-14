@@ -59,54 +59,45 @@ class MainActivity : AppCompatActivity() {
         val name = tokenManager.getName()
         val image = tokenManager.getID()
 
+        binding.greet.text = "Hello, $name"
         Log.d("KING1234", "$zeal , $name, $image")
 
         startTimer()
 
         if (tokenManager.getZeal() != null && tokenManager.getZeal() != "") {
-            isZeal = true
             binding.head.isVisible = false
             binding.desc.isVisible = false
             binding.buyZealButton.isVisible = false
             binding.zealAvailText.isVisible = true
             binding.showZealButton.isVisible = true
         } else {
-            isZeal = false
-            binding.head.isVisible = true
-            binding.desc.isVisible = true
-            binding.buyZealButton.isVisible = true
-            binding.zealAvailText.isVisible = false
-            binding.showZealButton.isVisible = false
-        }
-
-        if (!isZeal) {
             binding.progressBar.isVisible = true
             binding.mainLayout.isVisible = false
             binding.transparentBg.isVisible = true
-            CoroutineScope(Dispatchers.IO).launch {
+            CoroutineScope(Dispatchers.Main).launch {
                 val response = signupAPI.getZealId(token)
-//                if (response.body()?.success!!) {
+                Log.d("KING689", response.body().toString())
+                if (response.body()?.success == true) {
                     binding.mainLayout.isVisible = true
                     binding.transparentBg.isVisible = false
                     binding.progressBar.isVisible = false
-                    isZeal = true
                     tokenManager.saveZeal(response.body()!!.zeal_id)
                     tokenManager.saveName(response.body()!!.userData.name)
                     tokenManager.saveUserId(response.body()!!.userData.secure_url)
-//                }
+                }
+                else{
+                    binding.mainLayout.isVisible = true
+                    binding.transparentBg.isVisible = false
+                    binding.progressBar.isVisible = false
+                    binding.head.isVisible = true
+                    binding.desc.isVisible = true
+                    binding.buyZealButton.isVisible = true
+                    binding.zealAvailText.isVisible = false
+                    binding.showZealButton.isVisible = false
+
+                }
             }
-        } else {
-            binding.mainLayout.isVisible = true
-            binding.transparentBg.isVisible = false
-            binding.progressBar.isVisible = false
-            isZeal = false
         }
-
-
-
-
-
-
         binding.buyZeal.setOnClickListener {
             if (!isZeal) {
                 val purchaseDialogPopup = PurchaseDialogFragment()

@@ -1,6 +1,7 @@
 package com.zealicon_2024
 
 import TeamAdapter
+import android.content.Intent
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -52,6 +53,7 @@ class TeamActivity : AppCompatActivity() {
 
 
         binding.back.setOnClickListener {
+            startActivity(Intent(this , MenuActivity::class.java))
             finish()
         }
     }

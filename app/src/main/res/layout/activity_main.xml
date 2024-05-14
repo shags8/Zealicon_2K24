@@ -54,7 +54,6 @@
                 android:fontFamily="@font/outfit_medium"
                 android:text="Hello Ayush"
                 android:textColor="@color/white"
-
                 android:textSize="28sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
