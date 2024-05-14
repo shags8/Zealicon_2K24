@@ -26,6 +26,8 @@ import kotlinx.coroutines.launch
 import org.json.JSONObject
 import javax.inject.Inject
 import kotlin.math.log
+import kotlin.text.Typography.dagger
+
 @AndroidEntryPoint
 class PurchaseDialogFragment : BottomSheetDialogFragment(){
     private var _binding : FragmentPurchaseDialogBinding? = null
@@ -47,17 +49,25 @@ class PurchaseDialogFragment : BottomSheetDialogFragment(){
         }
 
         if(isPayDone == 2){
-            binding.background.setImageResource(R.drawable.background_popup_2)
-            binding.success.isVisible = true
-            binding.paymentHead.isVisible = true
-            binding.yourZeal.isVisible = true
-            binding.zealId.isVisible = true
-            binding.continueText.isVisible = false
-            binding.payButton.setImageResource(R.drawable.home_button)
-            binding.purchaseDesc.isVisible = false
-            binding.purchaseHead.isVisible = false
-            binding.verifyHead.isVisible = false
-            binding.zealAmount.isVisible = false
+            if(binding.success.isVisible)
+            {
+                binding.success.isVisible = false
+                binding.background.setImageResource(R.drawable.background_popup_2)
+                binding.payButton.setImageResource(R.drawable.pay_now)
+            }
+            else{
+                binding.background.setImageResource(R.drawable.background_popup_2)
+                binding.success.isVisible = true
+                binding.paymentHead.isVisible = true
+                binding.yourZeal.isVisible = true
+                binding.zealId.isVisible = true
+                binding.continueText.isVisible = false
+                binding.payButton.setImageResource(R.drawable.home_button)
+                binding.purchaseDesc.isVisible = false
+                binding.purchaseHead.isVisible = false
+                binding.verifyHead.isVisible = false
+                binding.zealAmount.isVisible = false
+            }
         }
 
         if(isPayDone == 3){
