@@ -1,8 +1,8 @@
 package com.zealicon_2024.models
 
 data class OTPVerifyRequest (
-    val email: String,
-    val otp: Int
+    val phone: String,
+    val otp: String
 )
 
 data class OTPVerifyResponse(
