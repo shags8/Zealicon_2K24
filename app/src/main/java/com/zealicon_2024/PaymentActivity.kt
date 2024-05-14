@@ -14,7 +14,9 @@ import com.zealicon_2024.api.SignupAPI
 import com.zealicon_2024.models.PaymentVerifyRequest
 import com.zealicon_2024.models.SignupResponse
 import com.zealicon_2024.utils.Constants
+import com.zealicon_2024.utils.Constants.RAZORPAY_KEY
 import com.zealicon_2024.utils.Constants.isPayDone
+import com.zealicon_2024.utils.RemoteConfigHelper
 import com.zealicon_2024.utils.TokenManager
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.CoroutineScope
@@ -37,11 +39,13 @@ class PaymentActivity : AppCompatActivity(), PaymentResultWithDataListener {
         enableEdgeToEdge()
         setContentView(R.layout.activity_payment)
 
-        val orderId = intent.getStringExtra("id")
+        RemoteConfigHelper.fetchAndActivate()
 
+        val orderId = intent.getStringExtra("id")
+        val key = RAZORPAY_KEY
         Checkout.preload(applicationContext)
         val co = Checkout()
-        co.setKeyID("rzp_live_XFKbiwn0rPna6O")
+        co.setKeyID(key)
         try{
             val option = JSONObject()
             option.put("name", "Zealicon 2024")

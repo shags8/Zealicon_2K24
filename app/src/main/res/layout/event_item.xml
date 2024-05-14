@@ -21,6 +21,7 @@
             android:layout_width="match_parent"
             android:layout_height="204dp"
             android:scaleType="centerCrop"
+            android:padding="5dp"
             android:src="@drawable/event_image"
             app:layout_constraintTop_toTopOf="parent" />
 

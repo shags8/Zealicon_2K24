@@ -29,6 +29,13 @@ class TokenManager@Inject constructor(@ApplicationContext context: Context ) {
         editor.putString(PHONE_NUMBER,number)
         editor.apply()
     }
+
+    fun clearSharedPreferences() {
+        val editor = prefs.edit()
+        editor.clear()
+        editor.apply()
+    }
+
     fun getPhoneNumber(): String? {
         return prefs.getString(PHONE_NUMBER,null)
     }
