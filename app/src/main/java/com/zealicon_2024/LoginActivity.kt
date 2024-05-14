@@ -14,7 +14,7 @@ import javax.inject.Inject
 class LoginActivity : AppCompatActivity() {
     @Inject
     lateinit var tokenManager: TokenManager
-    public var email: String = ""
+    public var isLogin = 0
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
