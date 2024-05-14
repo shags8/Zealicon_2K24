@@ -58,10 +58,10 @@ class SignupRepository @Inject constructor(private val signupAPI: SignupAPI ,
         response.enqueue(object : Callback<LoginResponse> {
             override fun onResponse(call: Call<LoginResponse>, response: Response<LoginResponse>) {
 
-
                 if (response.isSuccessful && response.body() != null) {
-                    Log.e("loginRespone", "${response.body()}")
+                    Log.e("loginReponse", "${response.body()}")
                     Log.e("loginRespone", "${response}")
+                   // Log.e("loginRespone")
                     if (response.body()!!.message == "An otp is sent to email successfully.") {
                         Toast.makeText(context,"OTP sent successfully",Toast.LENGTH_SHORT).show()
                         navController.navigate(R.id.action_signinFragment_to_OTPFragment)

@@ -14,6 +14,8 @@ import com.zealicon_2024.api.SignupAPI
 import com.zealicon_2024.databinding.FragmentOTPBinding
 import com.zealicon_2024.models.OTPVerifyRequest
 import com.zealicon_2024.models.OTPVerifyResponse
+import com.zealicon_2024.models.ResendOTP
+import com.zealicon_2024.models.ResendOTPResponse
 import com.zealicon_2024.utils.TokenManager
 import com.zealicon_2024.viewmodel.SignupViewModel
 import dagger.hilt.android.AndroidEntryPoint
@@ -83,6 +85,7 @@ class OTPFragment : Fragment() {
 
 
                         }
+
                         override fun onFailure(call: Call<OTPVerifyResponse>, t: Throwable) {
                             Toast.makeText(context, "Something Went Wrong!", Toast.LENGTH_SHORT).show()
 
@@ -95,6 +98,40 @@ class OTPFragment : Fragment() {
             }
 
         }
+
+        binding.resend.setOnClickListener {
+            val phone = tokenManager.getPhoneNumber().toString()
+            // CoroutineScope(Dispatchers.IO).launch {
+            val response =
+                signupAPI.resendOTP(ResendOTP(phone))
+            response.enqueue(object : retrofit2.Callback<ResendOTPResponse> {
+                override fun onResponse(
+                    call: Call<ResendOTPResponse>,
+                    response: Response<ResendOTPResponse>
+                ) {
+                    if (response.isSuccessful && response.body() != null) {
+                        Toast.makeText(requireContext(),"OTP sent successfully",Toast.LENGTH_SHORT).show()
+                        Log.e("resendOtp", "${response.body()}")
+                    } else if (response.errorBody() != null) {
+                        val errObj =
+                            JSONObject(response.errorBody()!!.charStream().readText())
+                        Log.e("error body", errObj.toString())
+                        Log.e("error body", errObj.getString("message"))
+                        Log.e("error body", errObj.getString("success"))
+                        Toast.makeText(context, "OTP not correct", Toast.LENGTH_SHORT)
+                            .show()
+                    }
+                }
+
+                override fun onFailure(call: Call<ResendOTPResponse>, t: Throwable) {
+                    Toast.makeText(requireContext(),"Something Went Wrong!",Toast.LENGTH_SHORT).show()
+                }
+
+
+            })
+        }
+        //  }
+
         return binding.root
     }
 
