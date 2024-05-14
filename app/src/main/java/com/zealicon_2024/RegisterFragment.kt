@@ -28,6 +28,7 @@ import com.zealicon_2024.databinding.FragmentRegisterBinding
 import com.zealicon_2024.models.SignupRequest
 import com.zealicon_2024.utils.Constants.TAG
 import com.zealicon_2024.utils.NetworkResult
+import com.zealicon_2024.utils.TokenManager
 import com.zealicon_2024.viewmodel.SignupViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.CoroutineScope
@@ -47,6 +48,9 @@ class RegisterFragment : Fragment() {
     private var imageAdded = false
     private var currentImageView: ImageView? = null
     lateinit var imageUri: Uri
+    @Inject
+    lateinit var tokenManager : TokenManager
+
     private val contract = registerForActivityResult(ActivityResultContracts.TakePicture()) {
         if (it) {
             currentImageView!!.setImageURI(imageUri)
@@ -71,6 +75,8 @@ class RegisterFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        tokenManager = TokenManager(requireContext())
+
         binding.registerButton.setOnClickListener {
             val name = binding.inputName.text.toString()
             val phone = binding.inputPhone.text.toString()
@@ -79,25 +85,10 @@ class RegisterFragment : Fragment() {
             val imageString = convertImageToBase64(binding.inputId)
             val image = "data:image/png;base64,$imageString"
 
-            if (name.isNotEmpty() && phone.isNotEmpty() && admNo.isNotEmpty() && email.isNotEmpty()) {
-                if (Patterns.EMAIL_ADDRESS.matcher(email).matches() && email.isNotEmpty()) {
-                    finalEmail = email
-                } else {
-                    Toast.makeText(
-                        activity as LoginActivity,
-                        "Please provide valid email",
-                        Toast.LENGTH_SHORT
-                    ).show()
-                }
-
-                if(phone.length < 10){
-                    Toast.makeText(
-                        activity as LoginActivity,
-                        "Please provide valid phone number",
-                        Toast.LENGTH_SHORT
-                    ).show()
-                }
-
+            if (name.isNotEmpty() && phone.isNotEmpty() && admNo.isNotEmpty() && email.isNotEmpty() && image.isNotEmpty()
+                && phone.length == 10 && Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
+                finalEmail=email
+                signupViewModel.signupUser(SignupRequest(finalEmail, image, name, phone))
             } else {
                 Toast.makeText(
                     activity as LoginActivity,
@@ -105,8 +96,6 @@ class RegisterFragment : Fragment() {
                     Toast.LENGTH_SHORT
                 ).show()
             }
-
-            signupViewModel.signupUser(SignupRequest(finalEmail, image, name, phone))
         }
 
         currentImageView = binding.inputId

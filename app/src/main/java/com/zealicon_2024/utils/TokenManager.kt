@@ -1,12 +1,13 @@
 package com.zealicon_2024.utils
 
 import android.content.Context
+import com.zealicon_2024.utils.Constants.PHONE_NUMBER
 import com.zealicon_2024.utils.Constants.PREFS_TOKEN_FILE
 import com.zealicon_2024.utils.Constants.USER_TOKEN
 import dagger.hilt.android.qualifiers.ApplicationContext
 import javax.inject.Inject
 
-class TokenManager@Inject constructor(@ApplicationContext context: Context) {
+class TokenManager@Inject constructor(@ApplicationContext context: Context ) {
 
     private var prefs = context.getSharedPreferences(PREFS_TOKEN_FILE, Context.MODE_PRIVATE)
 
@@ -18,6 +19,14 @@ class TokenManager@Inject constructor(@ApplicationContext context: Context) {
 
     fun getToken(): String? {
         return prefs.getString(USER_TOKEN, null)
+    }
+    fun savePhoneNumber(number:String){
+        val editor=prefs.edit()
+        editor.putString(PHONE_NUMBER,number)
+        editor.apply()
+    }
+    fun getPhoneNumber(): String? {
+        return prefs.getString(PHONE_NUMBER,null)
     }
 
 }
