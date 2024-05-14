@@ -93,6 +93,7 @@
                         android:textColor="@color/white"
                         android:fontFamily="@font/outfit_medium"/>
                     <TextView
+                        android:id="@+id/prize"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="₹15,000"
@@ -136,6 +137,7 @@
                         />
 
                     <TextView
+                        android:id="@+id/date"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text = "21 May"
@@ -181,6 +183,7 @@
                         />
 
                     <TextView
+                        android:id="@+id/time"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text = "14 : 00"
@@ -225,6 +228,7 @@
                         />
 
                     <TextView
+                        android:id="@+id/venue"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text = "AB1, First Floor"
@@ -268,6 +272,7 @@
                         />
 
                     <TextView
+                        android:id="@+id/phone"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text = "9870804246"
@@ -312,6 +317,7 @@
                         />
 
                     <TextView
+                        android:id="@+id/desc"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Lorem ipsum dolor sit amet consectetur. Mollis pulvinar fermentum turpis feugiat sed orci. Cursus sed lorem diam a ut. Nibh egestas praesent facilisis et viverra phasellus donec at nascetur. Elit urna dui sit nibh. Sagittis habitant bibendum suscipit elementum. Dignissim condimentum dolor massa eget massa porttitor vel consectetur. Sit aliquam sed bibendum massa quam eget sodales."

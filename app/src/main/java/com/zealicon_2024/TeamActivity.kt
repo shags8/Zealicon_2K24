@@ -32,5 +32,9 @@ class TeamActivity : AppCompatActivity() {
         teamAdapter = TeamAdapter(this, teamArray)
         binding.coreTeamRV.adapter = teamAdapter
         binding.manageTeamRV.adapter = teamAdapter
+
+        binding.back.setOnClickListener {
+            finish()
+        }
     }
 }

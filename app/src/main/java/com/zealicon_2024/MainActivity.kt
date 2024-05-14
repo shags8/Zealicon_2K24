@@ -11,11 +11,24 @@ import android.util.Log
 import android.view.WindowManager
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.isVisible
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
 import com.zealicon_2024.adapters.EventsAdapter
+import com.zealicon_2024.api.SignupAPI
 import com.zealicon_2024.databinding.ActivityMainBinding
+import com.zealicon_2024.utils.TokenManager
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 import java.util.Timer
 import java.util.TimerTask
+import java.util.concurrent.TimeUnit
+import javax.inject.Inject
+import kotlin.math.log
 
 
 @AndroidEntryPoint
@@ -25,6 +38,14 @@ class MainActivity : AppCompatActivity() {
     private lateinit var adapter: CardAdapter
     private var eventsList: ArrayList<EventCard> = ArrayList()
     private lateinit var countDownTimer: CountDownTimer
+    private val db = FirebaseDatabase.getInstance().reference
+
+    @Inject
+    lateinit var tokenManager: TokenManager
+
+    @Inject
+    lateinit var signupAPI: SignupAPI
+    var isZeal = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,31 +53,67 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val futureDate = Calendar.getInstance()
-        futureDate.set(2024, Calendar.MAY, 20, 0, 0)
+        val token = tokenManager.getToken().toString()
 
-        val currentDate = Calendar.getInstance()
-        Log.d("KING", currentDate.time.toString())
-        val timeDifference = futureDate.timeInMillis - currentDate.timeInMillis
+        val zeal = tokenManager.getZeal()
+        val name = tokenManager.getName()
+        val image = tokenManager.getID()
 
-        countDownTimer = object : CountDownTimer(timeDifference, 1000) {
-            override fun onTick(p0: Long) {
-                val remainingTime = calculateTime(p0)
-                val array = remainingTime.toCharArray()
-                binding.d1TV.text = array[0].toString()
-                binding.d2TV.text = array[1].toString()
-                binding.h1TV.text = array[3].toString()
-                binding.h2TV.text = array[4].toString()
-            }
+        Log.d("KING1234", "$zeal , $name, $image")
 
-            override fun onFinish() {
-            }
+        startTimer()
+
+        if (tokenManager.getZeal() != null && tokenManager.getZeal() != "") {
+            isZeal = true
+            binding.head.isVisible = false
+            binding.desc.isVisible = false
+            binding.buyZealButton.isVisible = false
+            binding.zealAvailText.isVisible = true
+            binding.showZealButton.isVisible = true
+        } else {
+            isZeal = false
+            binding.head.isVisible = true
+            binding.desc.isVisible = true
+            binding.buyZealButton.isVisible = true
+            binding.zealAvailText.isVisible = false
+            binding.showZealButton.isVisible = false
         }
 
-        countDownTimer.start()
+        if (!isZeal) {
+            binding.progressBar.isVisible = true
+            binding.mainLayout.isVisible = false
+            binding.transparentBg.isVisible = true
+            CoroutineScope(Dispatchers.IO).launch {
+                val response = signupAPI.getZealId(token)
+//                if (response.body()?.success!!) {
+                    binding.mainLayout.isVisible = true
+                    binding.transparentBg.isVisible = false
+                    binding.progressBar.isVisible = false
+                    isZeal = true
+                    tokenManager.saveZeal(response.body()!!.zeal_id)
+                    tokenManager.saveName(response.body()!!.userData.name)
+                    tokenManager.saveUserId(response.body()!!.userData.secure_url)
+//                }
+            }
+        } else {
+            binding.mainLayout.isVisible = true
+            binding.transparentBg.isVisible = false
+            binding.progressBar.isVisible = false
+            isZeal = false
+        }
+
+
+
+
+
 
         binding.buyZeal.setOnClickListener {
-            startActivity(Intent(this, ZealTicketActivity::class.java))
+            if (!isZeal) {
+                val purchaseDialogPopup = PurchaseDialogFragment()
+                purchaseDialogPopup.show(supportFragmentManager, "BSDialogFragment")
+            } else {
+                startActivity(Intent(this, ZealTicketActivity::class.java))
+            }
         }
 
         binding.menuButton.setOnClickListener {
@@ -70,32 +127,51 @@ class MainActivity : AppCompatActivity() {
         adapter = CardAdapter(events)
         binding.rv.adapter = adapter
         adapter.onItemClick = {
-            if(it.equals("Cultural Events")){
+            if (it.equals("Cultural Events")) {
                 startActivity(Intent(this, CulturalEvents::class.java))
-            }else{
+            } else {
                 startActivity(Intent(this, TechnicalEvent::class.java))
             }
         }
-
-        binding.search.setOnClickListener {
-            startActivity(Intent(this, SearchViewActivity::class.java))
-        }
-
-
-        for (i in 1..10)
-
-            eventsList.add(
-                EventCard(
-                    R.drawable.event_image.toString(), 1, "LineUp"
-                )
-            )
 
         eventsAdapter = EventsAdapter(eventsList)
 
         binding.rvEvents.adapter = eventsAdapter
 
+        val eventRef = db.child("mainEvents").child("data")
+        eventRef.addValueEventListener(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                snapshot.children.forEach {
+                    val name = it.child("name").getValue(String::class.java).toString()
+                    val desc = it.child("desc").getValue(String::class.java).toString()
+                    val date = it.child("date").getValue(String::class.java).toString()
+                    val time = it.child("time").getValue(String::class.java).toString()
+                    val image = it.child("image").getValue(String::class.java).toString()
+                    val phone = it.child("phone").getValue(Long::class.java)!!.toLong()
+                    val venue = it.child("venue").getValue(String::class.java).toString()
+                    val prize = it.child("prize").getValue(String::class.java).toString()
+
+                    val eventData = EventCard(image, date, name, venue, desc, time, prize, phone)
+
+                    eventsList.add(eventData)
+                }
+
+                eventsAdapter.notifyDataSetChanged()
+
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                TODO("Not yet implemented")
+            }
+        })
+
+
+
         eventsAdapter.onItemClick = {
-            startActivity(Intent(this, EventDetailsActivity::class.java))
+            val intent = Intent(this, EventDetailsActivity::class.java)
+            intent.putExtra("path", "mainEvents")
+            intent.putExtra("position", it)
+            startActivity(intent)
         }
 
 
@@ -122,11 +198,77 @@ class MainActivity : AppCompatActivity() {
         }, 0, 3000)
     }
 
+    private fun startTimer() {
+        val futureDate = Calendar.getInstance()
+        futureDate.set(2024, Calendar.MAY, 20, 0, 0)
+
+        val currentDate = Calendar.getInstance()
+        Log.d("KING", currentDate.time.toString())
+        val timeDifference = futureDate.timeInMillis - currentDate.timeInMillis
+        val remainingDays = TimeUnit.MILLISECONDS.toDays(timeDifference)
+        val remainingHours = TimeUnit.MILLISECONDS.toHours(timeDifference) % 24
+        val remainingMinutes = TimeUnit.MILLISECONDS.toMinutes(timeDifference) % 60
+        val remainingSeconds = TimeUnit.MILLISECONDS.toSeconds(timeDifference) % 60
+
+        Log.d("1234", "startTimer: $remainingDays")
+
+        when {
+            remainingDays > 0 -> {
+                binding.firstTime.text = "DAYS"
+                binding.secondTime.text = "HOURS"
+            }
+
+            remainingHours > 0 -> {
+                binding.firstTime.text = "HOURS"
+                binding.secondTime.text = "MINUTES"
+            }
+
+            else -> {
+                binding.firstTime.text = "MINUTES"
+                binding.secondTime.text = "SECONDS"
+            }
+        }
+
+        countDownTimer = object : CountDownTimer(timeDifference, 1000) {
+            override fun onTick(p0: Long) {
+                val remainingTime = calculateTime(p0)
+                val array = remainingTime.toCharArray()
+                binding.d1TV.text = array[0].toString()
+                binding.d2TV.text = array[1].toString()
+                binding.h1TV.text = array[3].toString()
+                binding.h2TV.text = array[4].toString()
+            }
+
+            override fun onFinish() {
+            }
+        }
+
+        countDownTimer.start()
+
+    }
+
 
     private fun calculateTime(millisUntilFinished: Long): String {
-        val days = millisUntilFinished / (1000 * 60 * 60 * 24)
-        val hours = millisUntilFinished % (1000 * 60 * 60 * 24) / (1000 * 60 * 60)
+        val remainingDays = TimeUnit.MILLISECONDS.toDays(millisUntilFinished)
+        val remainingHours = TimeUnit.MILLISECONDS.toHours(millisUntilFinished) % 24
+        val remainingMinutes = TimeUnit.MILLISECONDS.toMinutes(millisUntilFinished) % 60
+        val remainingSeconds = TimeUnit.MILLISECONDS.toSeconds(millisUntilFinished) % 60
 
-        return String.format("%02d:%02d", days, hours)
+        val remainingTime = when {
+            remainingDays > 0 -> {
+                String.format("%02d:%02d", remainingDays, remainingHours)
+            }
+
+            remainingHours > 0 -> {
+                String.format("%02d:%02d", remainingHours, remainingMinutes)
+            }
+
+            else -> {
+                String.format("%02d:%02d", remainingMinutes, remainingSeconds)
+            }
+        }
+
+
+        return remainingTime
     }
 }
