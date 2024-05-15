@@ -76,6 +76,7 @@ class PurchaseDialogFragment : BottomSheetDialogFragment(){
 
 
         binding.payButton.setOnClickListener {
+            binding.payButton.isEnabled = false
             if(isPayDone == 1 || isPayDone == 3){
                 CoroutineScope(Dispatchers.IO).launch {
                     val token = tokenManager.getToken().toString()
@@ -84,11 +85,13 @@ class PurchaseDialogFragment : BottomSheetDialogFragment(){
                     Log.d("KING", "onCreateView: ${res.body()?.order?.id}")
                     val orderId = res.body()?.order?.id
                     val intent = Intent(requireContext(), PaymentActivity::class.java)
+                    binding.payButton.isEnabled = true
                     intent.putExtra("id", orderId)
                     startActivity(intent)
                 }
 //                startActivity(Intent(requireContext(), PaymentActivity::class.java))
             }else{
+                binding.payButton.isEnabled = true
                 startActivity(Intent(requireContext(), MainActivity::class.java))
                 activity?.finish()
             }
@@ -118,6 +121,7 @@ class PurchaseDialogFragment : BottomSheetDialogFragment(){
 
     override fun onResume() {
         super.onResume()
+        binding.payButton.isEnabled = true
         if(isPayDone == 2){
             binding.background.setImageResource(R.drawable.background_popup_2)
             binding.success.isVisible = true

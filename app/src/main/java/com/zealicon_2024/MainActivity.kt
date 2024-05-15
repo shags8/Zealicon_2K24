@@ -78,7 +78,7 @@ class MainActivity : AppCompatActivity() {
                     binding.showZealButton.isVisible = true
                     tokenManager.saveZeal(response.body()!!.zeal_id)
                     tokenManager.saveName(response.body()!!.userData.name)
-                    tokenManager.saveUserId(response.body()!!.userData.secure_url)
+                    tokenManager.saveID(response.body()!!.userData.secure_url)
                     val name = tokenManager.getName()
                     binding.greet.text = "Hello, $name"
                     binding.mainLayout.isVisible = true

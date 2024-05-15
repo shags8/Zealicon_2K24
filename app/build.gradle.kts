@@ -14,7 +14,7 @@ android {
         applicationId = "com.zealicon_2024"
         minSdk = 24
         targetSdk = 34
-        versionCode = 1
+        versionCode = 8
         versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
