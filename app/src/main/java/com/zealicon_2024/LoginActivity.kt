@@ -28,4 +28,9 @@ class LoginActivity : AppCompatActivity() {
         }
         //this is a comment
     }
+
+    override fun onStart() {
+        super.onStart()
+        RemoteConfigHelper.fetchAndActivate()
+    }
 }

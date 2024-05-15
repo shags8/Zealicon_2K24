@@ -101,16 +101,16 @@ class MainActivity : AppCompatActivity() {
         val zeal = tokenManager.getZeal()
         val name = tokenManager.getName()
         val image = tokenManager.getID()
+        val number = tokenManager.getPhoneNumber()
 
         binding.greet.text = "Hello, $name"
-        Log.d("KING1234", "$zeal , $name, $image")
+        Log.d("KING1234", "$zeal , $name, $image, $number")
         binding.buyZeal.setOnClickListener {
-            if (!isZeal) {
-                val purchaseDialogPopup = PurchaseDialogFragment()
-                purchaseDialogPopup.show(supportFragmentManager, "BSDialogFragment")
-            } else {
-                startActivity(Intent(this, ZealTicketActivity::class.java))
-            }
+            onClick()
+        }
+
+        binding.buyZealButton.setOnClickListener {
+            onClick()
         }
         if(name.isNullOrEmpty()){
             binding.greet.text = "Hello,There"
@@ -180,6 +180,15 @@ class MainActivity : AppCompatActivity() {
 
         animation()
 
+    }
+
+    fun onClick(){
+        if (!isZeal) {
+            val purchaseDialogPopup = PurchaseDialogFragment()
+            purchaseDialogPopup.show(supportFragmentManager, "BSDialogFragment")
+        } else {
+            startActivity(Intent(this, ZealTicketActivity::class.java))
+        }
     }
 
     fun animation() {

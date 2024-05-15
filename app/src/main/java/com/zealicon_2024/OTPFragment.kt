@@ -8,6 +8,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.zealicon_2024.api.SignupAPI
@@ -51,6 +52,7 @@ class OTPFragment : Fragment() {
             val otp=binding.otp.text.toString()
             if(otp.length==6){
                 val phone=tokenManager.getPhoneNumber().toString()
+                binding.progressBar.isVisible = true
                 CoroutineScope(Dispatchers.IO).launch {
                     val response = signupAPI.verifyOTP(OTPVerifyRequest(phone, otp))
                     response.enqueue(object : retrofit2.Callback<OTPVerifyResponse> {
@@ -66,6 +68,7 @@ class OTPFragment : Fragment() {
                                     Toast.makeText(context, "OTP verified", Toast.LENGTH_SHORT).show()
                                     Log.e("token", "${tokenManager.getToken()}")
                                     Log.e("_id", "${tokenManager.getUserId()}")
+                                    binding.progressBar.isVisible = false
                                     val activity = activity as LoginActivity
                                     if(activity.isLogin == 1){
                                         startActivity(Intent(requireContext(), MainActivity::class.java))
@@ -77,6 +80,7 @@ class OTPFragment : Fragment() {
                                 }
                             }else if (response.errorBody() != null){
                                 val errObj = JSONObject(response.errorBody()!!.charStream().readText())
+                                binding.progressBar.isVisible = false
                                 Log.e("error body", errObj.toString())
                                 Log.e("error body", errObj.getString("message"))
                                 Log.e("error body", errObj.getString("success"))
@@ -101,6 +105,7 @@ class OTPFragment : Fragment() {
 
         binding.resend.setOnClickListener {
             val phone = tokenManager.getPhoneNumber().toString()
+            binding.progressBar.isVisible = true
             // CoroutineScope(Dispatchers.IO).launch {
             val response =
                 signupAPI.resendOTP(ResendOTP(phone))
@@ -110,9 +115,11 @@ class OTPFragment : Fragment() {
                     response: Response<ResendOTPResponse>
                 ) {
                     if (response.isSuccessful && response.body() != null) {
+                        binding.progressBar.isVisible = false
                         Toast.makeText(requireContext(),"OTP sent successfully",Toast.LENGTH_SHORT).show()
                         Log.e("resendOtp", "${response.body()}")
                     } else if (response.errorBody() != null) {
+                        binding.progressBar.isVisible = false
                         val errObj =
                             JSONObject(response.errorBody()!!.charStream().readText())
                         Log.e("error body", errObj.toString())

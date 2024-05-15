@@ -78,7 +78,7 @@ class PurchaseDialogFragment : BottomSheetDialogFragment(){
         binding.payButton.setOnClickListener {
             binding.payButton.isEnabled = false
             if(isPayDone == 1 || isPayDone == 3){
-                CoroutineScope(Dispatchers.IO).launch {
+                CoroutineScope(Dispatchers.Main).launch {
                     val token = tokenManager.getToken().toString()
                     Log.d("KING123", "$token")
                     val res = paymentAPI.getOrderID(OrderRequest(token))
