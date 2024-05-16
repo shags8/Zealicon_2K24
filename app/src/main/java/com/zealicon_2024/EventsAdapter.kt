@@ -43,6 +43,5 @@ class EventsAdapter(
         holder.itemView.setOnClickListener{
             onItemClick?.invoke(position)
         }
-
     }
 }

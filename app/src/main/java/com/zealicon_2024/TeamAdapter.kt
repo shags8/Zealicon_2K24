@@ -18,6 +18,7 @@ class TeamAdapter(private val context: Context, private val teamList: List<TeamM
     }
 
     override fun onBindViewHolder(holder: TeamViewHolder, position: Int) {
+        holder.binding.post.text=teamList[position].role
         holder.binding.name.text = teamList[position].name
         Glide.with(holder.itemView.context).load(teamList[position].image).into(holder.binding.eventImage)
     }
