@@ -10,6 +10,7 @@ import android.widget.Toast
 import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import androidx.transition.Visibility
 import com.zealicon_2024.api.SignupAPI
 import com.zealicon_2024.databinding.FragmentSigninBinding
 import com.zealicon_2024.di.NetworkModule
@@ -49,14 +50,14 @@ class SigninFragment : Fragment() {
             val number = binding.inputNumber.text.toString()
             if (number.isNotEmpty() && number.length == 10) {
                 binding.loginButton.isEnabled = false
-                binding.progressBar.isVisible = true
+                binding.progressBar.visibility = View.VISIBLE
                 CoroutineScope(Dispatchers.IO).launch {
                     val response = signupAPI.loginUser(LoginRequest(number))
                     response.enqueue(object : Callback<LoginResponse> {
                         override fun onResponse(call: Call<LoginResponse>, response: Response<LoginResponse>) {
 
                             if (response.isSuccessful && response.body() != null) {
-                                binding.progressBar.isVisible = false
+                                binding.progressBar.visibility = View.GONE
                                 binding.loginButton.isEnabled = true
                                 Log.e("loginReponse", "${response.body()}")
                                 Log.e("loginRespone", "${response}")
@@ -69,7 +70,7 @@ class SigninFragment : Fragment() {
 
                             } else if (response.errorBody() != null) {
                                 val errObj = JSONObject(response.errorBody()!!.charStream().readText())
-                                binding.progressBar.isVisible = false
+                                binding.progressBar.visibility = View.GONE
                                 binding.loginButton.isEnabled = true
                                 Log.e("error body", errObj.toString())
                                 Log.e("error body", errObj.getString("message"))
@@ -79,6 +80,8 @@ class SigninFragment : Fragment() {
                         }
 
                         override fun onFailure(call: Call<LoginResponse>, t: Throwable) {
+                            binding.progressBar.visibility = View.GONE
+                            binding.loginButton.isEnabled = true
                             Log.e("failureResponse", "${t.message}")
                             Toast.makeText(context, "Login Failed", Toast.LENGTH_SHORT).show()
 
@@ -86,11 +89,10 @@ class SigninFragment : Fragment() {
                     })
                 }
 //                signupViewModel.loginUser(LoginRequest(number) , findNavController() , requireContext())
-                binding.progressBar.isVisible = false
                 Log.e("id123", number)
            }
             else {
-                binding.progressBar.isVisible = false
+                binding.progressBar.visibility = View.GONE
                 binding.loginButton.isEnabled = true
                 Toast.makeText(
                     activity as LoginActivity,
