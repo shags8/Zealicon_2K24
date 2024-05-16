@@ -1,8 +1,11 @@
 package com.zealicon_2024
 
+import android.app.Dialog
 import android.content.pm.PackageManager
 import android.graphics.Bitmap
+import android.graphics.Color
 import android.graphics.drawable.BitmapDrawable
+import android.graphics.drawable.ColorDrawable
 import android.net.Uri
 import android.os.Bundle
 import android.util.Base64
@@ -12,6 +15,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.Window
 import android.widget.ImageView
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
@@ -44,12 +48,21 @@ class RegisterFragment : Fragment() {
     private val binding get() = _binding!!
     private val signupViewModel by viewModels<SignupViewModel>()
     private val CAM_PERM_CODE = 101
-    private var defaultImageView: ImageView? = null
     private var imageAdded = false
     private var currentImageView: ImageView? = null
     lateinit var imageUri: Uri
     @Inject
     lateinit var tokenManager : TokenManager
+
+    private val contract2 = registerForActivityResult(ActivityResultContracts.GetContent()){
+        if(it == null){
+            imageAdded = false
+            currentImageView!!.setImageResource(R.drawable.upload_id)
+        }else{
+            imageAdded = true
+            currentImageView!!.setImageURI(it)
+        }
+    }
 
     private val contract = registerForActivityResult(ActivityResultContracts.TakePicture()) {
         if (it) {
@@ -89,7 +102,7 @@ class RegisterFragment : Fragment() {
                 val imageString = convertImageToBase64(binding.inputId)
                 image = "data:image/png;base64,$imageString"
             }else{
-                Toast.makeText(requireContext(), "Please upload your ID card.", Toast.LENGTH_SHORT).show()
+                Toast.makeText(requireContext(), "Please upload your ID card**", Toast.LENGTH_SHORT).show()
             }
 
 
@@ -120,7 +133,7 @@ class RegisterFragment : Fragment() {
         currentImageView = binding.inputId
 
         binding.inputId.setOnClickListener {
-            askCameraPermission()
+            openPopup()
         }
 
         imageUri = createImageUri()
@@ -153,6 +166,25 @@ class RegisterFragment : Fragment() {
                 }
             }
         })
+    }
+
+    private fun openPopup(){
+        val popup = Dialog(requireContext())
+        popup.requestWindowFeature(Window.FEATURE_NO_TITLE)
+        popup.setCancelable(true)
+        popup.setContentView(R.layout.photo_select_popup)
+        popup.window?.setBackgroundDrawable(ColorDrawable(Color.WHITE))
+        popup.show()
+
+        popup.findViewById<ImageView>(R.id.cameraButton).setOnClickListener {
+            askCameraPermission()
+            popup.dismiss()
+        }
+
+        popup.findViewById<ImageView>(R.id.galleryButton).setOnClickListener {
+            contract2.launch("image/*")
+            popup.dismiss()
+        }
     }
 
     override fun onRequestPermissionsResult(
