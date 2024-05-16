@@ -81,7 +81,6 @@ class CulturalEvents : AppCompatActivity() {
             intent.putExtra("position", it)
             intent.putExtra("path", "culturalEvents")
             startActivity(intent)
-
         }
 
 

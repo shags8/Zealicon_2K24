@@ -17,7 +17,11 @@ import com.zealicon_2024.databinding.TeamItemBinding
 class TeamActivity : AppCompatActivity() {
     private lateinit var binding: ActivityTeamBinding
     lateinit var teamAdapter: TeamAdapter
+    lateinit var teamAdapter2: TeamAdapter
+    lateinit var teamAdapter3: TeamAdapter
     lateinit var teamArray: ArrayList<TeamMember>
+    lateinit var coreArray:ArrayList<TeamMember>
+    lateinit var techTeam:ArrayList<TeamMember>
     private val db = FirebaseDatabase.getInstance().reference
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -26,18 +30,23 @@ class TeamActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         teamArray = arrayListOf()
-
+        coreArray= arrayListOf()
+        techTeam= arrayListOf()
         teamAdapter = TeamAdapter(this, teamArray)
-        binding.coreTeamRV.adapter = teamAdapter
+        teamAdapter2=TeamAdapter(this,coreArray)
+        teamAdapter3=TeamAdapter(this,techTeam)
+        binding.managementTeam.adapter = teamAdapter
+        binding.rv2.adapter=teamAdapter2
+        binding.rv3.adapter=teamAdapter3
 
         val eventRef = db.child("team").child("data")
         eventRef.addValueEventListener(object: ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 snapshot.children.forEach{
+                    val role=it.child("role").getValue(String::class.java).toString()
                     val name = it.child("name").getValue(String::class.java).toString()
                     val image = it.child("image").getValue(String::class.java).toString()
-
-                    val eventData = TeamMember(name, image)
+                    val eventData = TeamMember(role,name, image)
 
                     teamArray.add(eventData)
                 }
@@ -51,7 +60,46 @@ class TeamActivity : AppCompatActivity() {
             }
         })
 
+        val eventRef2 = db.child("team").child("coreTeam")
+        eventRef2.addValueEventListener(object: ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                snapshot.children.forEach{
+                    val role=it.child("role").getValue(String::class.java).toString()
+                    val name = it.child("name").getValue(String::class.java).toString()
+                    val image = it.child("image").getValue(String::class.java).toString()
+                    val eventData = TeamMember(role,name, image)
+                    coreArray.add(eventData)
+                }
 
+                teamAdapter2.notifyDataSetChanged()
+
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                TODO("Not yet implemented")
+            }
+        })
+
+        val eventRef3 = db.child("team").child("techTeam")
+        eventRef3.addValueEventListener(object: ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                snapshot.children.forEach{
+                    val role=it.child("role").getValue(String::class.java).toString()
+                    val name = it.child("name").getValue(String::class.java).toString()
+                    val image = it.child("image").getValue(String::class.java).toString()
+                    val eventData = TeamMember(role,name, image)
+
+                    techTeam.add(eventData)
+                }
+
+                teamAdapter3.notifyDataSetChanged()
+
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                TODO("Not yet implemented")
+            }
+        })
         binding.back.setOnClickListener {
             startActivity(Intent(this , MenuActivity::class.java))
             finish()
