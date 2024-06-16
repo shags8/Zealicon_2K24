@@ -12,14 +12,14 @@ The official android app of the annual fest of JSSATEN, Zealicon 2k24. The theme
   <img src="https://github.com/shags8/Zealicon_2K24/blob/master/app/src/main/res/drawable/11.jpg" width="100" height="200">
   <img src="https://github.com/shags8/Zealicon_2K24/blob/master/app/src/main/res/drawable/12.jpg" width="100" height="200">
   <img src="https://github.com/shags8/Zealicon_2K24/blob/master/app/src/main/res/drawable/13.jpg" width="100" height="200">
-<!--   <img src="https://github.com/phoenix-kanak/LineUp/blob/kanak/app/src/main/res/drawable/4.jpeg?raw=true" width="100" height="200"> -->
+
 </div>
 <br>
 <div align="center">
   <img src="https://github.com/shags8/Zealicon_2K24/blob/master/app/src/main/res/drawable/14.jpg" width="100" height="200">
   <img src="https://github.com/shags8/Zealicon_2K24/blob/master/app/src/main/res/drawable/15.jpg" width="100" height="200">
   <img src="https://github.com/shags8/Zealicon_2K24/blob/master/app/src/main/res/drawable/16.jpg" width="100" height="200">
-<!--   <img src="https://github.com/phoenix-kanak/LineUp/blob/kanak/app/src/main/res/drawable/8.png?raw=true" width="100" height="200"> -->
+
 </div>
 
 
@@ -39,7 +39,3 @@ The app is hosted on Google play store
 <a href="https://play.google.com/store/apps/details?id=com.zealicon_2024">
   <img src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png" width="200" height="80" alt="Get it on Google Play">
 </a>
-
-
- [![Get it on Google Play](https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png)](https://play.google.com/store/apps/details?id=com.zealicon_2024)
-
