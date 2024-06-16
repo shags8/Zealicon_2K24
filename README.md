@@ -9,7 +9,7 @@ The official android app of the annual fest of JSSATEN, Zealicon 2k24. The theme
 
   ## 📷 Screenshots
 <div align="center">
-  <img src="https://github.com/shags8/Zealicon_2K24/blob/master/app/src/main/res/drawable/11.jpg" width="150" height="200">
+  <img src="https://github.com/shags8/Zealicon_2K24/blob/master/app/src/main/res/drawable/11.jpg" width="150" height="250">
   <img src="https://github.com/shags8/Zealicon_2K24/blob/master/app/src/main/res/drawable/12.jpg" width="150" height="200">
   <img src="https://github.com/shags8/Zealicon_2K24/blob/master/app/src/main/res/drawable/13.jpg" width="150" height="200">
 <!--   <img src="https://github.com/phoenix-kanak/LineUp/blob/kanak/app/src/main/res/drawable/4.jpeg?raw=true" width="100" height="200"> -->
