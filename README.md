@@ -40,6 +40,8 @@ The app is hosted on Google play store
   <img src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png" width="200" height="80" alt="Get it on Google Play">
 </a>
 
+
+## Developers✨
 <table>
   <tbody><tr>
     <td align="center"><a href="https://github.com/shags8"><img alt="" src="https://avatars.githubusercontent.com/shags8" width="100px;"><br><sub><b>Shagun </b></sub></a></td>
