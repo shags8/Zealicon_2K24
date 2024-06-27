@@ -159,7 +159,7 @@ class PurchaseDialogFragment : BottomSheetDialogFragment(){
 
     private fun initiatePayment(){
         val co = Checkout()
-        co.setKeyID("rzp_test_QO79q5On7PHekR")
+        co.setKeyID("")
         try{
             val option = JSONObject()
             option.put("name", "Zealicon 2024")
