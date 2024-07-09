@@ -9,16 +9,16 @@ The official android app of the annual fest of JSSATEN, Zealicon 2k24. The theme
 
   ## 📷 Screenshots
 <div align="center">
-  <img src="https://github.com/shags8/Zealicon_2K24/blob/master/app/src/main/res/drawable/11.jpg" width="100" height="200">
-  <img src="https://github.com/shags8/Zealicon_2K24/blob/master/app/src/main/res/drawable/12.jpg" width="100" height="200">
-  <img src="https://github.com/shags8/Zealicon_2K24/blob/master/app/src/main/res/drawable/13.jpg" width="100" height="200">
+  <img src="https://github.com/shags8/Zealicon_2K24/blob/master/app/src/main/res/drawable/11.jpg" width="180" height="200">
+  <img src="https://github.com/shags8/Zealicon_2K24/blob/master/app/src/main/res/drawable/12.jpg" width="180" height="200">
+  <img src="https://github.com/shags8/Zealicon_2K24/blob/master/app/src/main/res/drawable/13.jpg" width="180" height="200">
 
 </div>
 <br>
 <div align="center">
-  <img src="https://github.com/shags8/Zealicon_2K24/blob/master/app/src/main/res/drawable/14.jpg" width="100" height="200">
-  <img src="https://github.com/shags8/Zealicon_2K24/blob/master/app/src/main/res/drawable/15.jpg" width="100" height="200">
-  <img src="https://github.com/shags8/Zealicon_2K24/blob/master/app/src/main/res/drawable/16.jpg" width="100" height="200">
+  <img src="https://github.com/shags8/Zealicon_2K24/blob/master/app/src/main/res/drawable/14.jpg" width="180" height="200">
+  <img src="https://github.com/shags8/Zealicon_2K24/blob/master/app/src/main/res/drawable/15.jpg" width="180" height="200">
+  <img src="https://github.com/shags8/Zealicon_2K24/blob/master/app/src/main/res/drawable/16.jpg" width="180" height="200">
 
 </div>
 
