@@ -7,19 +7,14 @@ The official android app of the annual fest of JSSATEN, Zealicon 2k24. The theme
 - Unique Zeal-Id for each attendee
 - Contact section for assistance
 
-  ## 📷 Screenshots
-<div align="center">
-  <img src="https://github.com/shags8/Zealicon_2K24/blob/master/app/src/main/res/drawable/11.jpg" width="180" height="200">
-  <img src="https://github.com/shags8/Zealicon_2K24/blob/master/app/src/main/res/drawable/12.jpg" width="180" height="200">
-  <img src="https://github.com/shags8/Zealicon_2K24/blob/master/app/src/main/res/drawable/13.jpg" width="180" height="200">
-
-</div>
-<br>
-<div align="center">
-  <img src="https://github.com/shags8/Zealicon_2K24/blob/master/app/src/main/res/drawable/14.jpg" width="180" height="200">
-  <img src="https://github.com/shags8/Zealicon_2K24/blob/master/app/src/main/res/drawable/15.jpg" width="180" height="200">
-  <img src="https://github.com/shags8/Zealicon_2K24/blob/master/app/src/main/res/drawable/16.jpg" width="180" height="200">
-
+## Screenshots📲
+<div style="overflow-x: auto; white-space: nowrap;">
+    <img src="https://github.com/shags8/Zealicon_2K24/blob/master/app/src/main/res/drawable/11.jpg" alt="Screenshot 1" style="width: 280px;">
+    <img src="https://github.com/shags8/Zealicon_2K24/blob/master/app/src/main/res/drawable/12.jpg" alt="Screenshot 2" style="width: 280px;">
+    <img src="https://github.com/shags8/Zealicon_2K24/blob/master/app/src/main/res/drawable/13.jpg" alt="Screenshot 3" style="width: 280px;">
+    <img src="https://github.com/shags8/Zealicon_2K24/blob/master/app/src/main/res/drawable/14.jpg" alt="Screenshot 4" style="width: 280px;">
+    <img src="https://github.com/shags8/Zealicon_2K24/blob/master/app/src/main/res/drawable/15.jpg" alt="Screenshot 5" style="width: 280px;">
+    <img src="https://github.com/shags8/Zealicon_2K24/blob/master/app/src/main/res/drawable/16.jpg" alt="Screenshot 6" style="width: 280px;">
 </div>
 
 
