@@ -7,6 +7,15 @@ The official android app of the annual fest of JSSATEN, Zealicon 2k24. The theme
 - Unique Zeal-Id for each attendee
 - Contact section for assistance
 
+## Download 
+
+The app is hosted on Google play store
+
+<a href="https://play.google.com/store/apps/details?id=com.zealicon_2024">
+  <img src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png" width="200" height="80" alt="Get it on Google Play">
+</a>
+
+
 ## Screenshots📲
 <div style="overflow-x: auto; white-space: nowrap;">
     <img src="https://github.com/shags8/Zealicon_2K24/blob/master/app/src/main/res/drawable/11.jpg" alt="Screenshot 1" style="width: 280px;">
@@ -27,19 +36,13 @@ The official android app of the annual fest of JSSATEN, Zealicon 2k24. The theme
 - RazorPay (Payment Integration)
 - Firebase Messaging
 
-  ## Download 
-
-The app is hosted on Google play store
-
-<a href="https://play.google.com/store/apps/details?id=com.zealicon_2024">
-  <img src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png" width="200" height="80" alt="Get it on Google Play">
-</a>
 
 
 ## Developers✨
 <table>
   <tbody><tr>
     <td align="center"><a href="https://github.com/shags8"><img alt="" src="https://avatars.githubusercontent.com/shags8" width="100px;"><br><sub><b>Shagun </b></sub></a></td>
+    <td align="center"><a href="https://github.com/yyuvraj54"><img alt="" src="https://avatars.githubusercontent.com/yyuvraj54" width="100px;"><br><sub><b>Yuvraj </b></sub></a></td>
     <td align="center"><a href="https://github.com/Agrawal-Ayush-009"><img alt="" src="https://avatars.githubusercontent.com/Agrawal-Ayush-009" width="100px;"><br><sub><b>Ayush </b></sub></a></td>
     <td align="center"><a href="https://github.com/phoenix-kanak"><img alt="" src="https://avatars.githubusercontent.com/phoenix-kanak" width="100px;"><br><sub><b>Kanak </b></sub></a></td>
    
